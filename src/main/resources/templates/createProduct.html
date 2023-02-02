@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/product/create"  th:object="${product}" method="post" >
+    <p th:text="*{id}"></p>
+    <p th:text="*{title}"></p>
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>제목</td>
+            <td><input type="text" th:field="*{title}"></td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td><input type="text" th:field="*{description}"></td>
+        </tr>
+        </tbody>
+        <button type="submit">등록</button>
+    </table>
+</form>
+<form action="/product/update"  th:object="${product}" method="post" >
+    <p th:text="*{title}"></p>
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>id</td>
+            <td><input type="text" th:field="*{id}"></td>
+        </tr>
+        <tr>
+            <td>제목</td>
+            <td><input type="text" th:field="*{title}"></td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td><input type="text" th:field="*{description}"></td>
+        </tr>
+        </tbody>
+        <button type="submit">등록</button>
+    </table>
+</form>
+<form th:action="'/product/delete/'+*{id}" th:object="${product}" method="post" >
+    <p th:text="*{title}"></p>
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>제목</td>
+            <td><input type="number" id="id" name="id"></td>
+        </tr>
+        </tbody>
+        <button type="submit">등록</button>
+    </table>
+</form>
+</body>
+</html>
