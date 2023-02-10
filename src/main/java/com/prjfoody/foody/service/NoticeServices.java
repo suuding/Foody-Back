@@ -2,6 +2,7 @@ package com.prjfoody.foody.service;
 
 import com.prjfoody.foody.domain.Notice;
 import com.prjfoody.foody.domain.Users;
+import com.prjfoody.foody.domain.types.UserType;
 import com.prjfoody.foody.modules.Validation;
 import com.prjfoody.foody.repository.Repositories;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +25,7 @@ public class NoticeServices implements Services<Notice> {
         this.validation = validation;
     }
 
+
     @Override
     public List<Notice> select(Notice notice, Users user) {
         return repository.select(notice, user);
@@ -31,25 +33,35 @@ public class NoticeServices implements Services<Notice> {
 
     @Override
     public Boolean create(Notice notice, Users user) {
+        //관리자만 공지 글 생성 가능
+        if (user.getUserType() == UserType.ADMIN) {
+            notice.initStuff(user);
 
-        notice.initStuff(user);
-        notice.setViewCount(notice.getViewCount()+1);
+            return repository.create(notice, user);
+        }
 
-        return repository.create(notice, user);
+        return false;
     }
 
     @Override
     public Boolean update(Notice notice, Users user) {
+        //관리자만 공지 글 수정 가능
+        if (user.getUserType() == UserType.ADMIN) {
+            notice.setLastDateTime(LocalDateTime.now());
 
-        notice.setLastDateTime(LocalDateTime.now());
-        notice.setDescription(notice.getDescription());
+            return repository.update(notice, user);
+        }
 
-        return repository.update(notice, user);
+        return false;
     }
 
     @Override
     public Boolean delete(Long id, Users user) {
 
-        return repository.delete(id, user);
+        if (user.getUserType() == UserType.ADMIN) {
+            return repository.delete(id, user);
+        }
+
+        return false;
     }
 }
