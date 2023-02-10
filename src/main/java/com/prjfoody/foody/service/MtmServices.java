@@ -26,11 +26,16 @@ public class MtmServices implements Services<Mtm> {
 
     @Override
     public List<Mtm> select(Mtm mtm, Users users) {
+
         return repository.select(mtm, users);
     }
 
     @Override
     public Boolean create(Mtm mtm, Users user) {
+        if(!validation.validUser(user))
+            return false;
+
+        mtm.initStuff(user);
 
         return repository.create(mtm, user);
     }
@@ -40,6 +45,7 @@ public class MtmServices implements Services<Mtm> {
         if(!validation.validUser(user))
             return false;
 
+        //작성자만 수정 가능
         if(validation.validOwnStuff(mtm, user)) {
             mtm.setLastDateTime(LocalDateTime.now());
 
@@ -58,6 +64,7 @@ public class MtmServices implements Services<Mtm> {
         mtm.setId(id);
         mtm.setOwner(user);
 
+        //작성자만 수정가능 (관리자는?)
         if(validation.validOwnStuff(mtm, user)) {
             return repository.delete(id, user);
         }
