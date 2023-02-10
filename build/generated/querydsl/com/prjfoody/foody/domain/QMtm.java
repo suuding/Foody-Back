@@ -53,8 +53,6 @@ public class QMtm extends EntityPathBase<Mtm> {
     //inherited
     public final NumberPath<Integer> viewCount;
 
-    public final StringPath writer = createString("writer");
-
     public QMtm(String variable) {
         this(Mtm.class, forVariable(variable), INITS);
     }

@@ -26,6 +26,8 @@ public class QBasket extends EntityPathBase<Basket> {
 
     public final QProduct product;
 
+    public final NumberPath<Integer> quantity = createNumber("quantity", Integer.class);
+
     public final QUsers user;
 
     public QBasket(String variable) {

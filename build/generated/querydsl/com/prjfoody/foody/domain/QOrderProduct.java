@@ -28,6 +28,10 @@ public class QOrderProduct extends EntityPathBase<OrderProduct> {
 
     public final QProduct product;
 
+    public final NumberPath<Integer> quantity = createNumber("quantity", Integer.class);
+
+    public final NumberPath<Integer> realPrice = createNumber("realPrice", Integer.class);
+
     public QOrderProduct(String variable) {
         this(OrderProduct.class, forVariable(variable), INITS);
     }

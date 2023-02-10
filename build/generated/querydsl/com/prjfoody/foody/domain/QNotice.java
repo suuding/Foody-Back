@@ -27,8 +27,7 @@ public class QNotice extends EntityPathBase<Notice> {
     //inherited
     public final BooleanPath delete;
 
-    //inherited
-    public final StringPath description;
+    public final StringPath description = createString("description");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> firstDateTime;
@@ -70,7 +69,6 @@ public class QNotice extends EntityPathBase<Notice> {
         super(type, metadata, inits);
         this._super = new com.prjfoody.foody.domain.abstracts.QNoticeAndMtm(type, metadata, inits);
         this.delete = _super.delete;
-        this.description = _super.description;
         this.firstDateTime = _super.firstDateTime;
         this.lastDateTime = _super.lastDateTime;
         this.lock = _super.lock;
