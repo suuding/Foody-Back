@@ -29,6 +29,8 @@ public class ProductServices implements Services<Product>{
 
     @Override
     public List<Product> select(Product product, Users users) {
+        // todo: users 가져오기
+        log.info("succ : "+product.getId());
         log.info("succ : "+product.getTitle());
         return repository.select(product, users);
     }

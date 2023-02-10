@@ -16,4 +16,5 @@ public class Basket {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "productId")
     private Product product;
+    private Integer quantity;
 }

@@ -3,6 +3,7 @@ package com.prjfoody.foody.repository;
 import com.prjfoody.foody.domain.Product;
 import com.prjfoody.foody.domain.QProduct;
 import com.prjfoody.foody.domain.Users;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -29,10 +30,25 @@ public class ProductRepository implements Repositories<Product> {
     @Override
     public List<Product> select(Product product, Users user) {
         QProduct qProduct = QProduct.product;
-        
-        // todo: select 동적쿼리 짜야해
+        BooleanBuilder builder = new BooleanBuilder();
+
+        if (product.getTitle() != null)
+            builder.and(qProduct.title.eq(product.getTitle()));
+
+        if (product.getId() != null)
+            builder.and(qProduct.id.eq(product.getId()));
+
+        if (product.getCategory() != null)
+            builder.and(qProduct.category.eq(product.getCategory()));
+
+        if (product.getLock() != null)
+            builder.and(qProduct.lock.eq(product.getLock()));
+
+        if (product.getOwner() != null)
+            builder.and(qProduct.owner.eq(product.getOwner()));
 
         return q.selectFrom(qProduct)
+                .where(builder)
                 .fetch();
     }
 
@@ -62,7 +78,8 @@ public class ProductRepository implements Repositories<Product> {
                     .set(qProduct.lastDateTime, product.getLastDateTime())
                     .set(qProduct.title , product.getTitle())
                     .set(qProduct.description , product.getDescription())
-                    /*
+
+                    /* 여기서부터 set 값에대해 어느정도 검증이 필요함 */
                     .set(qProduct.delete , product.getDelete())
                     .set(qProduct.lock , product.getLock())
                     .set(qProduct.category , product.getCategory())
@@ -74,7 +91,6 @@ public class ProductRepository implements Repositories<Product> {
                     .set(qProduct.saleStatus , product.getSaleStatus())
                     .set(qProduct.productImageUrl , product.getProductImageUrl())
 
-                     */
                     .where(qProduct.id.eq(product.getId()))
                     .execute();
 

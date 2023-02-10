@@ -9,13 +9,10 @@ import javax.persistence.*;
 @Data
 public class Orders extends CreateTime {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Id @GeneratedValue
     @Column(name = "orderId")
     private Long id;
     @ManyToOne
     @JoinColumn(name = "userId")
     private Users users;
-
-
 }
