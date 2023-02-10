@@ -59,7 +59,7 @@ public class MtmController implements Controllers<Mtm> {
         model.addAttribute("mtms", mtms);
 
         //문의글 전체 조희 페이지
-        return "mtms";
+        return "src-thymeleaf/html/mtm/mtm";
     }
 
     @GetMapping("/mtm/create")

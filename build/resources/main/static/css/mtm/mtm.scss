@@ -1,0 +1,89 @@
+@import "../variables";
+
+a {
+  text-decoration: none;
+}
+.service {
+  display: flex;
+  margin: 40px;
+
+  .left-side-bar {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      font-size: $f1;
+      margin-bottom: 60px;
+    }
+
+    .content {
+      font-size: $f2;
+      margin: 0px 20px;
+      display: flex;
+      flex-direction: column;
+
+      a {
+        color: black;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid black;
+      }
+
+      a:hover {
+        color: $theme-color;
+      }
+    }
+  }
+
+  .service-content {
+    width: 80%;
+    margin-left: $p1;
+
+    .table-screen {
+      height: 700px;
+    }
+
+    .title {
+      font-size: $f1;
+      justify-content: center;
+    }
+
+    .table {
+      margin-top: $p1;
+      font-size: $f2;
+
+      th,
+      tr {
+        text-align: center;
+      }
+
+      tbody {
+        tr:hover {
+          color: $theme-color;
+        }
+      }
+
+      .content-title {
+        text-align: left;
+      }
+    }
+    .write-button {
+      display: flex;
+      justify-content: end;
+      button {
+        width: 10rem;
+        background-color: $color2;
+        height: 3rem;
+        border-color: $color2;
+        margin-top: 3rem;
+        border-radius: 0.3rem;
+        font-weight: 400;
+        color: white;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

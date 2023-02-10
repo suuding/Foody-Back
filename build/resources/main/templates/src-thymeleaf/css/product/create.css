@@ -1,0 +1,60 @@
+.register_form legend {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 3rem;
+}
+.register_form hr {
+  width: 60%;
+  margin: 0 auto;
+}
+.register_form .register_fieldset {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.register_form .register_fieldset .register_input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30rem;
+}
+.register_form .register_fieldset .register_input #male2 {
+  margin-right: 2rem;
+}
+.register_form .register_fieldset .register_input #male1 {
+  margin-left: 2rem;
+}
+.register_form .register_fieldset .register_input .male {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+}
+.register_form .register_fieldset .register_input .male input {
+  accent-color: rgb(228, 82, 82);
+  height: 1.5rem;
+}
+.register_form .register_fieldset button {
+  width: 25rem;
+  background-color: rgb(248, 155, 155);
+  height: 3rem;
+  border-color: rgb(248, 155, 155);
+  margin-top: 3rem;
+  border-radius: 0.3rem;
+  font-weight: 400;
+  color: white;
+  font-size: 1.2rem;
+}
+.register_form label {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.register_form input {
+  width: 15rem;
+  height: 2.2rem;
+  margin: 1rem;
+  border-radius: 0.3rem;
+  border-width: 0.09rem;
+}/*# sourceMappingURL=create.css.map */

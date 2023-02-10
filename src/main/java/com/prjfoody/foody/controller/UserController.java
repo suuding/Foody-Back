@@ -34,7 +34,7 @@ public class UserController implements Controllers<Users> {
     public String login(Model model, HttpServletRequest request) {
         model.addAttribute("user", new Users());
 
-        return "users/login";
+        return "src-thymeleaf/html/user/login";
     }
     
     // 로그인 요청
@@ -73,6 +73,12 @@ public class UserController implements Controllers<Users> {
         }
 
         return "main";
+    }
+
+    @GetMapping("/user/sign-up")
+    public String create() {
+
+        return "src-thymeleaf/html/user/register";
     }
 
     // 회원가입

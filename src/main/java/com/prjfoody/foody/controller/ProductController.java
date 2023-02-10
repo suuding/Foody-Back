@@ -63,7 +63,12 @@ public class ProductController implements Controllers<Product> {
         }
 
 
-        return "createProduct";
+        return "/src-thymeleaf/html/product/product";
+    }
+
+    @GetMapping("/product/event")
+    public String event() {
+        return "/src-thymeleaf/html/product/event";
     }
 
     // todo: 상품등록 페이지 필요

@@ -1,0 +1,156 @@
+@import "../variables.scss";
+
+.order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  .product {
+    h5 {
+      text-align: center;
+    }
+    .basket_content {
+      display: flex;
+      margin-bottom: 2rem;
+      justify-content: space-between;
+      align-items: center;
+      .inform {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        input {
+          height: 1rem;
+          width: 2rem;
+          margin-right: 3rem;
+        }
+        img {
+          width: 15%;
+          margin-left: 1rem;
+        }
+        label {
+          margin-left: 5%;
+          font-size: 1.2rem;
+        }
+      }
+
+      .manipulate {
+        float: right;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        button {
+          background-color: white;
+          border-radius: 0.5rem;
+          border-color: rgb(170, 169, 169);
+        }
+
+        .count_box {
+          display: flex;
+          justify-content: space-around;
+          width: 10%;
+          align-items: center;
+          button {
+            margin: 0 1rem;
+          }
+        }
+        p {
+          margin: auto 0;
+        }
+        .discount_box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          #no_discount {
+            text-decoration: line-through;
+          }
+          #discount {
+            font-size: 1.2rem;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+    .orderer {
+      margin-bottom: 2rem;
+      .orderer_box {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        p {
+          padding: 0 1rem;
+        }
+        .strong {
+          font-weight: 700;
+        }
+        .normal {
+        }
+      }
+    }
+
+    .order_pay {
+      .orderer_box {
+        button {
+          height: 2rem;
+          width: 2rem;
+          background-color: white;
+        }
+      }
+    }
+    .order_check {
+      .order_check_form {
+        display: flex;
+        #all_check {
+          width: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+.orderer_box {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  p {
+    padding: 0 1rem;
+  }
+  .strong {
+    font-weight: 700;
+  }
+  .normal {
+  }
+}
+
+.final_button {
+  font-weight: 600;
+  color: white;
+  font-size: 1.3rem;
+  width: 20rem;
+  height: 3rem;
+  background-color: $color2;
+  border-color: $color2;
+  border-radius: 0.5rem;
+  margin: 1rem auto;
+}
+
+.final {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    text-align: center;
+    color: gray;
+    font-size: 0.7rem;
+  }
+}
+
+.order_check_form.check {
+  margin-left: 0.6rem;
+}

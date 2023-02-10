@@ -25,6 +25,17 @@ public class MainController {
 
         List<Product> select = service.select(new Product(), new Users());
         model.addAttribute("productList", select);
-        return "src-thymeleaf/html/main/main-page";
+        return "/src-thymeleaf/html/main/main-page";
     }
+
+    @GetMapping("/user/register")
+    public String register() {
+        return "/src-thymeleaf/html/user/register";
+    }
+
+    @GetMapping("/main")
+    public String main() {
+        return "/src-thymeleaf/html/main/main-page";
+    }
+
 }

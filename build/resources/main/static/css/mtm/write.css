@@ -1,0 +1,73 @@
+.left-side-bar {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+.left-side-bar .title {
+  font-size: 40px;
+  margin-bottom: 60px;
+}
+.left-side-bar .content {
+  font-size: 18px;
+  margin: 0px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.left-side-bar .content a {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+.left-side-bar .content a:hover {
+  color: #e55f35;
+}
+
+.write-screen {
+  width: 1440px;
+  display: flex;
+  margin: auto;
+  margin-top: 250px;
+}
+.write-screen .content {
+  width: 70%;
+}
+.write-screen .title {
+  width: 100%;
+  margin-bottom: 40px;
+}
+.write-screen .title .left {
+  display: inline-block;
+  text-align: center;
+  width: 20%;
+  font-size: 18px;
+}
+.write-screen .title .right {
+  width: 60%;
+  height: 2.5rem;
+}
+.write-screen textarea {
+  width: 80%;
+  height: 600px;
+  margin-left: 80px;
+  resize: none;
+  font-size: 18px;
+}
+.write-screen .button-box {
+  display: flex;
+  justify-content: end;
+  margin: 0px 120px;
+}
+.write-screen .button-box button {
+  width: 10rem;
+  background-color: rgb(248, 155, 155);
+  height: 3rem;
+  border-color: rgb(248, 155, 155);
+  margin-top: 3rem;
+  border-radius: 0.3rem;
+  font-weight: 400;
+  color: white;
+  font-size: 1.2rem;
+}/*# sourceMappingURL=write.css.map */

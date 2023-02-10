@@ -1,0 +1,101 @@
+@import "../component/left-side-bar.scss";
+@import "../variables.scss";
+
+.purchased-screen {
+  width: $screen-size;
+  margin: auto;
+  display: flex;
+  margin-top: $p1;
+}
+
+.basket_box {
+  width: 80%;
+  margin-left: $p1;
+  float: left;
+
+  .basket_top {
+    display: flex;
+    justify-content: flex-start;
+
+    margin-bottom: $p1;
+    align-items: center;
+    font-size: $f1;
+    label {
+      padding-left: 1rem;
+    }
+    p {
+      margin: auto;
+      margin-left: 1rem;
+    }
+  }
+
+  .basket_content {
+    float: right;
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    .inform {
+      display: flex;
+      margin-left: $p1 * 2;
+      justify-content: flex-start;
+      align-items: center;
+
+      input {
+        height: 1rem;
+        width: 2rem;
+        margin-right: 3rem;
+      }
+      img {
+        width: 15%;
+        margin-left: -2rem;
+      }
+      label {
+        margin-left: 5%;
+        font-size: 1.5rem;
+      }
+    }
+
+    .manipulate {
+      float: right;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      button {
+        background-color: white;
+        border-radius: 0.5rem;
+        border-color: rgb(170, 169, 169);
+      }
+
+      .count_box {
+        display: flex;
+        justify-content: space-around;
+        width: 10%;
+        align-items: center;
+        button {
+          margin: 0 1rem;
+        }
+      }
+      p {
+        margin: auto 0;
+      }
+      .discount_box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        #no_discount {
+          text-decoration: line-through;
+        }
+        #discount {
+          font-size: 1.3rem;
+          font-weight: 700;
+        }
+
+        button {
+        }
+      }
+    }
+  }
+}

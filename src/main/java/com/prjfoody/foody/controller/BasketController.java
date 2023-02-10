@@ -35,7 +35,7 @@ public class BasketController implements Controllers<Basket> {
         List<Basket> selectBasket = service.select(basket, sessionUser);
         model.addAttribute("baskets", selectBasket);
 
-        return null;
+        return "src-thymeleaf/html/basket/basket";
     }
 
 

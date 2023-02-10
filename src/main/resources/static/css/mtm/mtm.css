@@ -1,0 +1,74 @@
+a {
+  text-decoration: none;
+}
+
+.service {
+  display: flex;
+  margin: 40px;
+}
+.service .left-side-bar {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+.service .left-side-bar .title {
+  font-size: 40px;
+  margin-bottom: 60px;
+}
+.service .left-side-bar .content {
+  font-size: 18px;
+  margin: 0px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.service .left-side-bar .content a {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+.service .left-side-bar .content a:hover {
+  color: #e55f35;
+}
+.service .service-content {
+  width: 80%;
+  margin-left: 40px;
+}
+.service .service-content .table-screen {
+  height: 700px;
+}
+.service .service-content .title {
+  font-size: 40px;
+  justify-content: center;
+}
+.service .service-content .table {
+  margin-top: 40px;
+  font-size: 18px;
+}
+.service .service-content .table th,
+.service .service-content .table tr {
+  text-align: center;
+}
+.service .service-content .table tbody tr:hover {
+  color: #e55f35;
+}
+.service .service-content .table .content-title {
+  text-align: left;
+}
+.service .service-content .write-button {
+  display: flex;
+  justify-content: end;
+}
+.service .service-content .write-button button {
+  width: 10rem;
+  background-color: rgb(248, 155, 155);
+  height: 3rem;
+  border-color: rgb(248, 155, 155);
+  margin-top: 3rem;
+  border-radius: 0.3rem;
+  font-weight: 400;
+  color: white;
+  font-size: 1.2rem;
+}/*# sourceMappingURL=mtm.css.map */
