@@ -24,8 +24,6 @@ public class Mtm extends NoticeAndMtm {
     @Column(columnDefinition="TEXT", nullable = false)
     private String content;
 
-    private String writer;
-
     private Boolean status;
 
 

@@ -4,6 +4,7 @@ import com.prjfoody.foody.domain.Mtm;
 import com.prjfoody.foody.domain.QMtm;
 import com.prjfoody.foody.domain.QProduct;
 import com.prjfoody.foody.domain.Users;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +30,23 @@ public class MtmRepository implements Repositories<Mtm> {
 
     @Override
     public List<Mtm> select(Mtm mtm, Users user) {
+
         QMtm qMtm = QMtm.mtm;
+        BooleanBuilder builder = new BooleanBuilder();
+
+        if (mtm.getId() != null)
+            builder.and(qMtm.id.eq(mtm.getId()));
+
+        /*
+        if (mtm.getOwner() != null)
+            builder.and(qMtm.owner.eq(mtm.getOwner()));
+
+        if (mtm.getTitle() != null)
+            builder.and(qMtm.title.eq(mtm.getTitle()));
+        */
+
         return q.selectFrom(qMtm)
+                .where(builder)
                 .fetch();
     }
 
@@ -48,6 +64,7 @@ public class MtmRepository implements Repositories<Mtm> {
 
     @Override
     public Boolean update(Mtm mtm, Users user) {
+
         QMtm qMtm = QMtm.mtm;
 
         try {
@@ -68,6 +85,7 @@ public class MtmRepository implements Repositories<Mtm> {
     @Override
     public Boolean delete(Long id, Users user) {
         QMtm qMtm = QMtm.mtm;
+
         try {
             q.delete(qMtm)
                     .where(qMtm.id.eq(id))

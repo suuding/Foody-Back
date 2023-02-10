@@ -2,6 +2,7 @@ package com.prjfoody.foody.controller;
 
 import com.prjfoody.foody.domain.Mtm;
 import com.prjfoody.foody.domain.Users;
+import com.prjfoody.foody.domain.types.UserType;
 import com.prjfoody.foody.parser.UserFromRequest;
 import com.prjfoody.foody.service.MtmServices;
 import com.prjfoody.foody.service.Services;
@@ -26,7 +27,28 @@ public class MtmController implements Controllers<Mtm> {
         this.userFromRequest = userFromRequest;
     }
 
-    @PostMapping("/mtm")
+    //익명: 공개글 조회만 가능
+    //회원: 공개글 조회, 작성, 수정, 삭제 가능
+    //관리자: 모든 글 조회 가능
+
+    //한 문의글 조회
+    @GetMapping("/mtm/{id}")
+    public String selectOne(@PathVariable Long id, Model model) {
+
+        Mtm mtm = new Mtm();
+        mtm.setId(id);
+
+        List<Mtm> mtms = service.select(mtm, new Users());
+        if (mtms.size()>0)
+            mtm = mtms.get(0);
+
+        model.addAttribute("mtm", mtm);
+
+        //문의글 개별 페이지
+        return "mtm";
+    }
+
+    @GetMapping("/mtm")
     @Override
     public String select(@ModelAttribute Mtm mtm, Model model, HttpServletRequest request) {
 
@@ -36,6 +58,16 @@ public class MtmController implements Controllers<Mtm> {
         List<Mtm> mtms = service.select(mtm, new Users());
         model.addAttribute("mtms", mtms);
 
+        //문의글 전체 조희 페이지
+        return "mtms";
+    }
+
+    @GetMapping("/mtm/create")
+    public String create(Model model) {
+
+        model.addAttribute("mtt", new Mtm());
+
+        //문의글 생성(작성) 페이지
         return "createMtm";
     }
 
@@ -44,51 +76,68 @@ public class MtmController implements Controllers<Mtm> {
     @Override
     public String create(Mtm mtm, Model model, HttpServletRequest request) {
 
-        Users users = userFromRequest.convert(request);
-        if (service.create(mtm, users)) {
-            model.addAttribute("mtm", mtm);
-            return "createMtm";
+        Users user = userFromRequest.convert(request);
+
+        //회원과 관리자만 문의글 작성 가능
+        if (user.getUserType() != UserType.ANONY) {
+            if (service.create(mtm, user)) {
+                model.addAttribute("mtm", mtm);
+                return "redirect:/mtm/select";
+            }
         }
 
-        return "select";
+        return "mtms";
     }
 
-    //글 조회
-    @GetMapping("/mtm/{id}")
-    public String select(@PathVariable Long id, Model model) {
+    @GetMapping("/mtm/update/{id}")
+    public String update(@PathVariable Long id, Model model, HttpServletRequest request) {
+
+        Users user = userFromRequest.convert(request);
 
         Mtm mtm = new Mtm();
         mtm.setId(id);
 
-        List<Mtm> MtmResult = service.select(mtm, new Users());
-        if (MtmResult.size()>0)
-            mtm=MtmResult.get(0);
+        if (user.getUserType() != UserType.ANONY) {
+            List<Mtm> mtms = service.select(mtm, user);
+            if (mtms.size() > 0) {
+                model.addAttribute("mtm", mtm);
 
-        model.addAttribute("mtm", mtm);
+                return "updateMtm";
+            }
+        }
 
-        return "select";
+        return "mtms";
     }
 
     //글 수정
     @PostMapping("/mtm/update")
     @Override
     public String update(Mtm mtm, Model model, HttpServletRequest request) {
-        Users users = userFromRequest.convert(request);
-        if (service.update(mtm, users)) {
-            model.addAttribute("mtm", mtm);
-            return "createmtm";
+
+        Users user = userFromRequest.convert(request);
+
+        if (user.getUserType() != UserType.ANONY) {
+            if (service.update(mtm, user)) {
+                model.addAttribute("mtm", mtm);
+
+                return "redirect:/mtm/select";
+            }
         }
 
-        return "mtm";
+        return "mtms";
     }
 
     //글 삭제
     @PostMapping("/mtm/delete/{id}")
     @Override
     public String delete(@PathVariable Long id, HttpServletRequest request) {
+
         Users user = userFromRequest.convert(request);
-        if (service.delete(id, user)) {
-            return "createMtm";
+
+        if (user.getUserType() != UserType.ANONY) {
+            if (service.delete(id, user)) {
+                return "createMtm";
+            }
         }
 
         return "select";

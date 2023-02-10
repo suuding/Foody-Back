@@ -36,7 +36,7 @@ public class OrderRepository implements Repositories<Orders> {
         QOrders qOrders = QOrders.orders;
 
         try {
-
+            
             return true;
         } catch (Exception e) {
             return false;

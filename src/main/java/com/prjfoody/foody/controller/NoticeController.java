@@ -30,6 +30,23 @@ public class NoticeController implements Controllers<Notice>{
         this.userFromRequest = userFromRequest;
     }
 
+    @GetMapping("/notice/{id}")
+    public String selectOne(@PathVariable Long id, Model model) {
+
+        Notice notice = new Notice();
+        notice.setId(id);
+
+        List<Notice> notices = service.select(notice, new Users());
+        if (notices.size()>0)
+            notice = notices.get(0);
+
+        model.addAttribute("notice", notice);
+
+        //공지글 개별 페이지
+        return "notice";
+
+    }
+
     @GetMapping("/notice")
     @Override
     public String select(@ModelAttribute Notice notice, Model model, HttpServletRequest request) {
@@ -40,6 +57,17 @@ public class NoticeController implements Controllers<Notice>{
         List<Notice> notices = service.select(notice, new Users());
         model.addAttribute("notices", notices);
 
+        //공지글 목록 페이지
+        return "notices";
+    }
+
+    //사용자가 요청한 '공지 글 쓰기 페이지' 불러오는
+    @GetMapping("/notice/create")
+    public String create(Model model) {
+
+        model.addAttribute("notice", new Notice());
+
+        //공지글 생성 페이지
         return "createNotice";
     }
 
@@ -53,10 +81,31 @@ public class NoticeController implements Controllers<Notice>{
         if (user.getUserType() == UserType.ADMIN) {
             if (service.create(notice, user)) {
                 model.addAttribute("notice", notice);
-                return "createNotice";
+
+                return "redirect:/notice/select";
             }
         }
-        return "select";
+        return "notices";
+    }
+
+    @GetMapping("/notice/update/{id}")
+    public String update(@PathVariable Long id, Model model, HttpServletRequest request) {
+
+        Users user = userFromRequest.convert(request);
+
+        Notice notice = new Notice();
+        notice.setId(id);
+
+        if (user.getUserType() == UserType.ADMIN) {
+            List<Notice> notices = service.select(notice, user);
+            if (notices.size() > 0) {
+                model.addAttribute("notice", notices.get(0));
+
+                return "updateNotice";
+            }
+        }
+
+        return "notices";
     }
 
     @PostMapping("/notice/update")
@@ -68,11 +117,12 @@ public class NoticeController implements Controllers<Notice>{
         if (user.getUserType() == UserType.ADMIN) {
             if (service.update(notice, user)) {
                 model.addAttribute("notice", notice);
-                return "createNotice";
+
+                return "redirect:/notice/select";
             }
         }
 
-        return "select";
+        return "notices";
     }
 
     @PostMapping("/notice/delete/{id}")
@@ -83,9 +133,9 @@ public class NoticeController implements Controllers<Notice>{
 
         if (user.getUserType() == UserType.ADMIN) {
             if (service.delete(id, user)) {
-                return "createNotice";
+                return "notices";
             }
         }
-        return "select";
+        return "notices";
     }
 }

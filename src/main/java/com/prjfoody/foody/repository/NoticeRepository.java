@@ -3,6 +3,7 @@ package com.prjfoody.foody.repository;
 import com.prjfoody.foody.domain.Notice;
 import com.prjfoody.foody.domain.QNotice;
 import com.prjfoody.foody.domain.Users;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +30,14 @@ public class NoticeRepository implements Repositories<Notice> {
     public List<Notice> select(Notice notice, Users user) {
 
         QNotice qNotice = QNotice.notice;
+        BooleanBuilder builder = new BooleanBuilder();
+
+        //notice의 id가 있으면 동일한 qnotice 생성
+        if (notice.getId() != null)
+            builder.and(qNotice.id.eq(notice.getId()));
 
         return q.selectFrom(qNotice)
+                .where(builder)
                 .fetch();
     }
 
@@ -42,6 +49,7 @@ public class NoticeRepository implements Repositories<Notice> {
 
             return true;
         } catch (Exception e) {
+            log.warn("create notice fail");
             return false;
         }
     }
@@ -53,7 +61,6 @@ public class NoticeRepository implements Repositories<Notice> {
         try{
             q.update(qNotice)
                     .set(qNotice.lastDateTime, notice.getLastDateTime())
-                    .set(qNotice.viewCount, notice.getViewCount())
                     .set(qNotice.description, notice.getDescription())
                     .set(qNotice.title, notice.getTitle())
                     .where(qNotice.id.eq(notice.getId()))
