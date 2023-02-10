@@ -1,0 +1,56 @@
+@import "../variables";
+
+.product-column {
+  width: $screen-size;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $theme-color;
+  }
+
+  .product-box {
+    width: 17rem;
+    padding: 1rem;
+
+    &__img {
+      width: 100%;
+      height: 320px;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 320px;
+      }
+    }
+
+    &__price {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__title {
+      font-size: $f2;
+    }
+
+    &__discount {
+      color: red;
+      font-size: $f3;
+    }
+
+    &__sale-price {
+      margin-left: 5px;
+      font-size: $f3;
+    }
+
+    &__real-price {
+      font-size: $f2;
+      text-decoration: line-through;
+    }
+  }
+}

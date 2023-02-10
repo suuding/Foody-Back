@@ -1,0 +1,151 @@
+@import "../variables";
+
+h1 {
+  text-align: center;
+}
+
+.basket_box {
+  width: 70%;
+  float: left;
+
+  a {
+    color: black;
+  }
+
+  a:hover {
+    color: $theme-color;
+  }
+
+  .basket_top {
+    display: flex;
+    justify-content: flex-start;
+
+    padding-left: 0.5rem;
+    align-items: center;
+    font-size: 1.1rem;
+    label {
+      padding-left: 1rem;
+    }
+    p {
+      margin: auto;
+      margin-left: 1rem;
+    }
+  }
+
+  .basket_content {
+    float: right;
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    .inform {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      input {
+        height: 1rem;
+        width: 2rem;
+        margin-right: 3rem;
+      }
+      img {
+        width: 15%;
+        margin-left: -2rem;
+      }
+      label {
+        margin-left: 5%;
+        font-size: 1.5rem;
+      }
+    }
+
+    .manipulate {
+      float: right;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      button {
+        background-color: white;
+        border-radius: 0.5rem;
+        border-color: rgb(170, 169, 169);
+      }
+
+      .count_box {
+        display: flex;
+        justify-content: space-around;
+        width: 10%;
+        align-items: center;
+        button {
+          margin: 0 1rem;
+        }
+      }
+      p {
+        margin: auto 0;
+      }
+      .discount_box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        #no_discount {
+          text-decoration: line-through;
+        }
+        #discount {
+          font-size: 1.3rem;
+          font-weight: 700;
+        }
+
+        button {
+        }
+      }
+    }
+  }
+}
+
+.basket_order {
+  width: 28%;
+  margin-top: 2.5rem;
+  margin-left: 1rem;
+  float: right;
+  text-align: center;
+  border: 0.1rem solid rgb(210, 210, 210);
+  border-radius: 0.1rem;
+
+  .adress {
+    padding-top: 1rem;
+    button {
+      border-radius: 0.5rem;
+      width: 90%;
+      height: 3rem;
+      background-color: white;
+      border-color: $color2;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+  }
+  .pay {
+    display: flex;
+    flex-direction: column;
+
+    .paybox {
+      width: 80%;
+      margin: 0.2rem auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #paybox4 {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+    button {
+      border-radius: 0.5rem;
+      width: 90%;
+      height: 3rem;
+      background-color: $color2;
+      border-color: $color2;
+      font-size: 1.1rem;
+      margin: 1rem auto;
+    }
+  }
+}

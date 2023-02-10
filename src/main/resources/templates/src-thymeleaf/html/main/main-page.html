@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../css/main/main-page.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/4f20dc6699.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header th:insert="~{../component :: header}"></header>
+    <!-- <header class="container-fluid">
+      <nav class="container top_header">
+        <ul class="th_ul">
+          <li class="th_li01"><a href="../user/register.html">회원가입</a></li>
+          <li class="th_li02"><a href="../user/login.html">로그인</a></li>
+          <li class="th_li02"><a href="../user/mypage.html">마이페이지</a></li>
+          <li class="th_li03"><a href="../basket/basket.html">장바구니</a></li>
+          <li class="th_li04"><a href="../notice/service.html">고객센터</a></li>
+        </ul>
+      </nav>
+
+      <div class="container middle_header">
+        <a href="main.html"><img src="../../image/logo.png" /></a>
+        <form>
+          <input type="search" placeholder="" required />
+          <button type="submit">검색</button>
+        </form>
+      </div>
+      <hr />
+      <nav class="container bottom_header">
+        <ul class="bh_ul">
+          <li><a href="../product/product.html">농산</a></li>
+          <li><a href="../product/product.html">수산</a></li>
+          <li><a href="../product/product.html">축산</a></li>
+          <li><a href="../product/product.html">가공식품</a></li>
+          <li><a href="../product/event.html">이벤트</a></li>
+        </ul>
+      </nav>
+      <hr id="hr2" />
+    </header> -->
+    <div class="main-screen">
+      <div class="container">
+        <div class="slideshow" style="margin: 0 auto; margin-top: -2rem">
+          <ul class="slides">
+            <li><img src="../../image/slide1.jpeg" /></li>
+            <li><img src="../../image/slide2.jpeg" /></li>
+            <li><img src="../../image/slide3.png" /></li>
+            <li><img src="../../image/slide4.jpeg" /></li>
+            <li><img src="../../image/slide5.jpeg" /></li>
+            <li><img src="../../image/slide6.jpeg" /></li>
+          </ul>
+          <p class="controller">
+            <span class="prev">&lang;</span>
+            <span class="next">&rang;</span>
+          </p>
+        </div>
+      </div>
+      <script src="../../js/slideShow.js"></script>
+      <div class="container">
+        <div
+          class="recommand-product"
+          style="
+            width: 69rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+          "
+        >
+          <span
+            class="recommand-product__title"
+            style="font-size: 32px; text-align: center"
+            >이 상품 어때요?</span
+          >
+
+          <!-- Product List를 받아와 각각에 해당하는 데이터를 들고옴 -->
+          <div
+            th:each="product, status: ${productList}"
+            class="product-column"
+            style="width: 72rem"
+          >
+            <div class="product-box" style="width: 16rem">
+              <a
+                th:href="${'../product/goods?id=' + product.id}"
+                href="../product/goods.html"
+              >
+                <div class="product-box__img">
+                  <img
+                    th:src="${'../../image/product/' + product.image}"
+                    src="a.png"
+                  />
+                  <div class="basket-icon">
+                    <i class="bi bi-cart"></i>
+                  </div>
+                </div>
+                <div class="product-box__price">
+                  <div th:text="${product.name}" class="product-box__title">
+                    [풀무원]두부
+                  </div>
+                  <div>
+                    <span
+                      th:text="${product.discount}"
+                      class="product-box__discount"
+                      >80%</span
+                    >
+                    <span
+                      th:text="${product.salePrice}"
+                      class="product-box__sale-price"
+                      >1,500원</span
+                    >
+                  </div>
+                  <div
+                    th:text="${product.price}"
+                    class="product-box__real-price"
+                  >
+                    1,800원
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <hr />
+        <div class="container footer" style="padding-left: 5rem">
+          <nav class="top_footer">
+            <ul class="tf_ul">
+              <li><a href="#">소개</a></li>
+              <li><a href="#">소개영상</a></li>
+              <li><a href="#">인재채용</a></li>
+              <li><a href="#">이용약관</a></li>
+              <li><a href="#">개인정보처리방침</a></li>
+              <li><a href="#">이용안내</a></li>
+            </ul>
+          </nav>
+
+          <div class="middle_footer">
+            <ul class="mf_ul">
+              <li>법인명:주식회사 푸디</li>
+              <li>사업자등록번호:223-22-43822</li>
+              <li>주소:부산광역시 금정구</li>
+              <li>고객센터:051)394-2384</li>
+            </ul>
+          </div>
+          <div class="bottom_footer">
+            <div class="icon">
+              <i class="fa-brands fa-instagram icon1 fa-2x"></i>
+              <i class="fa-brands fa-facebook icon2 fa-2x"></i>
+              <i class="fa-brands fa-youtube icon3 fa-2x"></i>
+            </div>
+          </div>
+          <br /><br />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

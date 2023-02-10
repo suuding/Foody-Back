@@ -1,0 +1,21 @@
+@import "../component/header";
+@import "../component/basket-icon";
+
+@import "../component/product-box";
+@import "../main/main";
+@import "../component/footer";
+@import "../variables";
+
+.main-screen {
+  margin-top: $margin-top;
+  z-index: 1;
+}
+
+.recommand-product {
+  width: $screen-size;
+  margin: auto;
+
+  &__title {
+    font-size: $f1;
+  }
+}

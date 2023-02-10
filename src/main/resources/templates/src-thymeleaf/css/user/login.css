@@ -1,0 +1,46 @@
+.login_form {
+  margin-top: 3rem;
+}
+.login_form legend {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+.login_form fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login_form fieldset input {
+  margin-bottom: 1rem;
+  width: 20rem;
+  height: 2.5rem;
+  border-radius: 0.3rem;
+  border-color: gray;
+  border-width: 0.09rem;
+}
+.login_form fieldset button {
+  margin-bottom: 1rem;
+  width: 20rem;
+  color: white;
+  background-color: rgb(248, 155, 155);
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border-color: rgb(248, 155, 155);
+}
+.login_form nav ul {
+  display: flex;
+  justify-content: center;
+  margin-left: -2rem;
+}
+.login_form nav ul li {
+  list-style: none;
+  padding-right: 1rem;
+}
+.login_form nav ul li a:hover {
+  color: rgb(228, 82, 82);
+}
+.login_form nav ul li a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}/*# sourceMappingURL=login.css.map */

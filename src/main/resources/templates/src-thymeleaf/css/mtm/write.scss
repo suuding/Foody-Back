@@ -1,0 +1,56 @@
+@import "../variables.scss";
+@import "../component/left-side-bar.scss";
+
+.write-screen {
+  width: $screen-size;
+  display: flex;
+
+  margin: auto;
+  margin-top: $margin-top;
+
+  .content {
+    width: 70%;
+  }
+
+  .title {
+    width: 100%;
+    margin-bottom: $f1;
+
+    .left {
+      display: inline-block;
+      text-align: center;
+      width: 20%;
+      font-size: $f2;
+    }
+
+    .right {
+      width: 60%;
+      height: 2.5rem;
+    }
+  }
+
+  textarea {
+    width: 80%;
+    height: 600px;
+    margin-left: $f1 * 2;
+    resize: none;
+    font-size: $f2;
+  }
+  .button-box {
+    display: flex;
+    justify-content: end;
+    margin: 0px $f1 * 3;
+
+    button {
+      width: 10rem;
+      background-color: $color2;
+      height: 3rem;
+      border-color: $color2;
+      margin-top: 3rem;
+      border-radius: 0.3rem;
+      font-weight: 400;
+      color: white;
+      font-size: 1.2rem;
+    }
+  }
+}
