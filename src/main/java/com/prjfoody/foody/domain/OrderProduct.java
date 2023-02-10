@@ -16,4 +16,8 @@ public class OrderProduct {
     private Orders order;
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
+
+    private int quantity;
+
+    private int realprice;
 }
