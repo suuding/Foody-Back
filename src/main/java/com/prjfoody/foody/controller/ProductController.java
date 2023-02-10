@@ -6,6 +6,7 @@ import com.prjfoody.foody.domain.define.SessionAttributes;
 import com.prjfoody.foody.parser.UserFromRequest;
 import com.prjfoody.foody.service.Services;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,12 +35,6 @@ public class ProductController implements Controllers<Product> {
     /* 상품 개별 조회 */
     @GetMapping("/product/{id}")
     public String selectOne(@PathVariable Long id, Model model){
-        /*
-        Users users = new Users();
-        users.setId(11L);
-        request.getSession().setAttribute(SessionAttributes.ID.name(), users);
-
-         */
 
         Product product = new Product();
         product.setId(id);
@@ -56,17 +51,22 @@ public class ProductController implements Controllers<Product> {
     /* 상품 다수 조회 */
     @GetMapping("/product")
     @Override
+    // 접근 url : /product?id=1&title=abcd
     public String select(@ModelAttribute Product product, Model model, HttpServletRequest request) {
 
         if (product == null)
             product = new Product();
 
-        List<Product> products = service.select(product, new Users());
-        model.addAttribute("products", products);
+        List<Product> products = service.select(product, userFromRequest.convert(request));
+        if(products.size() > 0){
+            model.addAttribute("products", products);
+        }
+
 
         return "createProduct";
     }
 
+    // todo: 상품등록 페이지 필요
     /* 상품등록 */
     @PostMapping("/product/create")
     @Override
@@ -74,6 +74,7 @@ public class ProductController implements Controllers<Product> {
         log.info(product.getTitle());
         log.info(product.getDescription());
 
+        // session에서 가져온 user객체
         Users users = userFromRequest.convert(request);
         if (service.create(product, users)){
             model.addAttribute("product", product);
@@ -84,6 +85,8 @@ public class ProductController implements Controllers<Product> {
         return "select";
     }
 
+    // todo: 상품 수정 페이지
+    // Get 요청이 들어오면 상품등록페이지와 같은 url에 Product 객체를 select해서 넘겨주기
     @PostMapping("/product/update")
     @Override
     public String update(Product product, Model model, HttpServletRequest request) {
@@ -104,11 +107,11 @@ public class ProductController implements Controllers<Product> {
 
         Users users = userFromRequest.convert(request);
         if (service.delete(id, users)){
-            return "createProduct";
+            return "main";
         }
 
         // 에러페이지
-        return "select";
+        return "main";
     }
 
 

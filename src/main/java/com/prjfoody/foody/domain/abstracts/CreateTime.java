@@ -16,6 +16,6 @@ public abstract class CreateTime {
     // 엔티티를 create 하면서 시간을 둘다 초기화 해주는 일이 반복적임 
     public void initCreateTime(){
         this.firstDateTime = LocalDateTime.now();
-        this.lastDateTime = LocalDateTime.now();
+        this.lastDateTime = this.firstDateTime;
     }
 }
