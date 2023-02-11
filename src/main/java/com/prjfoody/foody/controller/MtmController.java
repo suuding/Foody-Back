@@ -45,7 +45,7 @@ public class MtmController implements Controllers<Mtm> {
         model.addAttribute("mtm", mtm);
 
         //문의글 개별 페이지
-        return "mtm";
+        return "src-thymeleaf/html/mtm/mtm_read";
     }
 
     @GetMapping("/mtm")
@@ -65,10 +65,10 @@ public class MtmController implements Controllers<Mtm> {
     @GetMapping("/mtm/create")
     public String create(Model model) {
 
-        model.addAttribute("mtt", new Mtm());
+        model.addAttribute("mtm", new Mtm());
 
         //문의글 생성(작성) 페이지
-        return "createMtm";
+        return "src-thymeleaf/html/mtm/write";
     }
 
     //글 등록
@@ -79,14 +79,23 @@ public class MtmController implements Controllers<Mtm> {
         Users user = userFromRequest.convert(request);
 
         //회원과 관리자만 문의글 작성 가능
-        if (user.getUserType() != UserType.ANONY) {
+        if (user != null) {
+            System.out.println("null아님: "+mtm.getContent());
             if (service.create(mtm, user)) {
                 model.addAttribute("mtm", mtm);
-                return "redirect:/mtm/select";
+                return "src-thymeleaf/html/mtm/mtm";
+            }
+        } else {
+            Users users= new Users();
+            users.setName("수딩");
+
+            if (service.create(mtm, users)) {
+                model.addAttribute("mtm", mtm);
+                return "src-thymeleaf/html/mtm/mtm";
             }
         }
 
-        return "mtms";
+        return "src-thymeleaf/html/mtm/write";
     }
 
     @GetMapping("/mtm/update/{id}")
