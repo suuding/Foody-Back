@@ -75,7 +75,6 @@
               >
                 <div class="product-box__img">
                   <img
-                    th:src="${'../image/product/' + product.image}"
                     src="a.png"
                   />
                   <div class="basket-icon">
@@ -83,7 +82,7 @@
                   </div>
                 </div>
                 <div class="product-box__price">
-                  <div th:text="${product.name}" class="product-box__title">
+                  <div th:text="${product.title}" class="product-box__title">
                     [풀무원]두부
                   </div>
                   <div>

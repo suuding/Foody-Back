@@ -32,11 +32,11 @@ public class MtmServices implements Services<Mtm> {
 
     @Override
     public Boolean create(Mtm mtm, Users user) {
-        if(!validation.validUser(user))
-            return false;
 
         mtm.initStuff(user);
-
+        System.out.println(mtm.getTitle());
+        System.out.println(mtm.getContent());
+        
         return repository.create(mtm, user);
     }
 

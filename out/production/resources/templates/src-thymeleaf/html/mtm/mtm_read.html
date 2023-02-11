@@ -29,7 +29,7 @@
     </style>
   </head>
   <body>
-    <header th:insert="~{../component :: header}"></header>
+    <header th:insert="~{src-thymeleaf/html/component/header :: header}"></header>
     <div class="container read">
       <div class="read_title">
         <h3 style="text-align: center">1:1 문의</h3>
@@ -37,66 +37,62 @@
         <!-- 현재 글 정보를 객체로 받아옴 -->
         <table th:object="${mtm}" style="width: 100%">
           <tr style="border: 1px solid pink">
-            <td
-              style="
+            <td style="
                 border: 1px solid pink;
                 text-align: center;
                 background-color: rgb(255, 230, 234);
-              "
-            >
+              ">
               제목
             </td>
             <td
               th:text="*{title}"
               style="border: 1px solid pink; width: 90%; padding-left: 1rem"
-            >
-              ㅁㅁㅁㅁ
-            </td>
+            ></td>
           </tr>
           <tr style="border: 1px solid pink">
-            <td
-              style="
+            <td style="
                 border: 1px solid pink;
                 text-align: center;
                 background-color: rgb(255, 230, 234);
-              "
-            >
+              ">
               작성자
             </td>
             <td
-              th:text="*{name}"
+              th:text="*{owner}"
               style="border: 1px solid pink; width: 90%; padding-left: 1rem"
-            >
-              이민경
-            </td>
+            ></td>
           </tr>
           <tr style="border: 1px solid pink">
-            <td
-              style="
+            <td style="
                 border: 1px solid pink;
                 text-align: center;
                 background-color: rgb(255, 230, 234);
-              "
-            >
+              ">
               작성일
             </td>
             <td
-              th:text="*{date}"
+              th:text="*{lastDateTime}"
               style="border: 1px solid pink; width: 90%; padding-left: 1rem"
-            >
-              2022.02.09
+            ></td>
+          </tr>
+          <tr style="border: 1px solid pink">
+            <td style="
+                border: 1px solid pink;
+                text-align: center;
+                background-color: rgb(255, 230, 234);
+              ">
+              내용
             </td>
+            <td
+              th:text="*{content}"
+              style="border: 1px solid pink; width: 90%; padding-left: 1rem"
+            ></td>
           </tr>
         </table>
 
-        <hr style="margin-top: 0" />
-        <p th:text="*{content}" style="text-align: center; min-height: 600px">
-          글 내용
-        </p>
-        <hr />
         <form
-          action="../mtm/mtm.html"
-          method="get"
+          th:action="@{../mtm}"
+          th:method="get"
           class="button"
           style="display: flex; justify-content: flex-end"
         >
@@ -117,6 +113,6 @@
         </form>
       </div>
     </div>
-    <footer th:insert="~{../component :: footer}"></footer>
+    <footer th:insert="~{src-thymeleaf/html/component/footer :: footer}"></footer>
   </body>
 </html>

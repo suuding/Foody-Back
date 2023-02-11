@@ -26,8 +26,8 @@
       <div class="left-side-bar">
         <div class="title">고객센터</div>
         <nav class="content">
-          <a th:href="@{../notice/service}">공지사항</a>
-          <a th:href="@{../mtm/mtm}">1:1문의</a>
+          <a th:href="@{../notice}">공지사항</a>
+          <a th:href="@{../mtm}">1:1문의</a>
         </nav>
       </div>
 
@@ -43,20 +43,18 @@
               </tr>
             </thead>
             <!-- mtmList를 받아 각각을 출력 -->
-            <tbody th:each="mtm, status: ${mtmList}">
+            <tbody th:each="mtm, status: ${mtms}">
               <!-- 클릭시 mtm_read 페이지로 이동하며, mtm 현재 값의 id를 받아 인자로 넘겨줌 -->
-              <tr
-                th:onclick="'window.location.href = \'' + ${'mtm_read?id=' + mtm.id} + '\''"
-              >
-                <td th:text="${mtm.title}" class="content-title">Mark</td>
-                <td th:text="${mtm.date}">@day</td>
-                <td th:text="${mtm.reply}">Y</td>
+              <tr>
+                <td class="content-title"><a th:text="${mtm.title}" th:href="@{../mtm/{id}(id=${mtm.id})}"></a></td>
+                <td th:text="${mtm.firstDateTime}">@day</td>
+                <td>Y</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <form th:action="@{../mtm/write}" method="get" class="write-button">
-          <button>문의하기</button>
+
+          <button><a th:href="@{../mtm/create}">문의 글</a></button>
         </form>
       </div>
     </div>

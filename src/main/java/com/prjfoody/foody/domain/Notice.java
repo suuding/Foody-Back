@@ -13,6 +13,7 @@ public class Notice extends NoticeAndMtm {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
+
     @Column(columnDefinition="TEXT", nullable = false)
     private String description;
 }
