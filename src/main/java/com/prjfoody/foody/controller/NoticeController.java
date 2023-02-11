@@ -43,7 +43,7 @@ public class NoticeController implements Controllers<Notice>{
         model.addAttribute("notice", notice);
 
         //공지글 개별 페이지
-        return "notice";
+        return "src-thymeleaf/html/notice/notice_read";
 
     }
 
@@ -58,7 +58,7 @@ public class NoticeController implements Controllers<Notice>{
         model.addAttribute("notices", notices);
 
         //공지글 목록 페이지
-        return "notices";
+        return "src-thymeleaf/html/notice/notice";
     }
 
     //사용자가 요청한 '공지 글 쓰기 페이지' 불러오는
@@ -68,7 +68,7 @@ public class NoticeController implements Controllers<Notice>{
         model.addAttribute("notice", new Notice());
 
         //공지글 생성 페이지
-        return "createNotice";
+        return "src-thymeleaf/html/notice/write";
     }
 
     @PostMapping("/notice/create")
@@ -78,14 +78,23 @@ public class NoticeController implements Controllers<Notice>{
         Users user = userFromRequest.convert(request);
 
         //관리자만 공지글 생성 가능
-        if (user.getUserType() == UserType.ADMIN) {
+        if (user != null) {
+            System.out.println("null아님: "+notice.getDescription());
             if (service.create(notice, user)) {
                 model.addAttribute("notice", notice);
 
-                return "redirect:/notice/select";
+                return "src-thymeleaf/html/notice/notice";
+            }
+        } else {
+            Users users= new Users();
+            users.setName("수딩");
+
+            if (service.create(notice, users)) {
+                model.addAttribute("notice", notice);
+                return "src-thymeleaf/html/notice/notice";
             }
         }
-        return "notices";
+        return "src-thymeleaf/html/notice/write";
     }
 
     @GetMapping("/notice/update/{id}")
