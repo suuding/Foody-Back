@@ -1,5 +1,11 @@
 @import "../variables";
 
+.register-screen {
+  margin: auto;
+  margin-top: $margin-top;
+  width: $screen-size;
+}
+
 .register_form {
   legend {
     text-align: center;

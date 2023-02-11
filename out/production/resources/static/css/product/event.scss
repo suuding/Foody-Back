@@ -1,5 +1,11 @@
 @import "../variables.scss";
 
+.event-screen {
+  margin: auto;
+  margin-top: $margin-top;
+  width: $screen-size;
+}
+
 .event-box {
   margin: $p2;
   width: 1050px;

@@ -67,7 +67,8 @@ a {
 }
 
 .product-category {
-  padding: 40px;
+  margin-top: 235px;
+  margin-bottom: 40px;
 }
 .product-category .title {
   padding: 40px;

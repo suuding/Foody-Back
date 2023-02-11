@@ -1,8 +1,8 @@
 .goods-screen {
   width: 1440px;
+  margin-top: 235px;
   margin: auto;
   display: flex;
-  margin-top: 40px;
 }
 .goods-screen .product-image {
   width: 430px;

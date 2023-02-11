@@ -6,13 +6,8 @@ a {
   text-decoration: none;
 }
 
-.container {
-  margin: auto;
-  margin-top: $margin-top;
-  width: $screen-size;
-}
-
 .product-category {
+  margin-top: $margin-top;
   padding: $p1;
 
   .title {

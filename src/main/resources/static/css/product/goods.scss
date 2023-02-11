@@ -2,9 +2,9 @@
 
 .goods-screen {
   width: $screen-size;
+  margin-top: $margin-top;
   margin: auto;
   display: flex;
-  margin-top: $p1;
 
   .product-image {
     width: 430px;
