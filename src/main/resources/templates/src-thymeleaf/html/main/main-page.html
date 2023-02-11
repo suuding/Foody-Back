@@ -47,35 +47,35 @@
       </div>
       <script src="/js/slideShow.js"></script>
       <div class="container">
+
         <div
           class="recommand-product"
           style="
             width: 69rem;
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            flex-flow:wrap;
           "
         >
-          <span
-            class="recommand-product__title"
-            style="font-size: 32px; text-align: center"
-            >이 상품 어때요?</span
-          >
 
+        <span
+          class="recommand-product__title"
+        >이 상품 어때요?</span>
           <!-- Product List를 받아와 각각에 해당하는 데이터를 들고옴 -->
           <div
             th:each="product, status: ${productList}"
             class="product-column"
-            style="width: 72rem"
+            style="
+                    width: 25%;
+                    margin:0"
           >
             <div class="product-box" style="width: 16rem">
               <a
-                th:href="${'../product/goods?id=' + product.id}"
+                th:href="${'../product/' + product.id}"
                 href="../product/goods.html"
               >
                 <div class="product-box__img">
                   <img
-                    src="a.png"
+                    th:src="${'/image/product/' + product.id + '.jpg'}"
                   />
                   <div class="basket-icon">
                     <i class="bi bi-cart"></i>
@@ -87,18 +87,18 @@
                   </div>
                   <div>
                     <span
-                      th:text="${product.saleRate}"
+                      th:text="${product.saleRate+'%'}"
                       class="product-box__discount"
                       >80%</span
                     >
                     <span
-                      th:text="${product.salePrice}"
+                      th:text="${product.salePrice+'원'}"
                       class="product-box__sale-price"
                       >1,500원</span
                     >
                   </div>
                   <div
-                    th:text="${product.price}"
+                    th:text="${product.price+'원'}"
                     class="product-box__real-price"
                   >
                     1,800원
