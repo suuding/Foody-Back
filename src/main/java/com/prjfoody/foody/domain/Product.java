@@ -3,16 +3,13 @@ package com.prjfoody.foody.domain;
 import com.prjfoody.foody.domain.abstracts.Products;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
 public class Product extends Products {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "productId")
     private Long id;
     private String productImageUrl;
