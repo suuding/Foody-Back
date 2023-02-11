@@ -75,9 +75,9 @@ public class UserController implements Controllers<Users> {
         return "main";
     }
 
-    @GetMapping("/user/sign-up")
-    public String create() {
-
+    @GetMapping("/user/register")
+    public String register(Model model) {
+        model.addAttribute("user", new Users());
         return "src-thymeleaf/html/user/register";
     }
 

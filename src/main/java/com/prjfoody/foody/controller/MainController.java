@@ -28,11 +28,6 @@ public class MainController {
         return "/src-thymeleaf/html/main/main-page";
     }
 
-    @GetMapping("/user/register")
-    public String register() {
-        return "/src-thymeleaf/html/user/register";
-    }
-
     @GetMapping("/main")
     public String main() {
         return "/src-thymeleaf/html/main/main-page";

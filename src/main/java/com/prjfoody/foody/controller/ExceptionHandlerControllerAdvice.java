@@ -11,6 +11,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @Slf4j
 public class ExceptionHandlerControllerAdvice {
 
+    /*
     @ExceptionHandler(NullPointerException.class)
     public String handleNullPointerException() {
         log.warn("NullPointerException Occur!!!");
@@ -32,4 +33,6 @@ public class ExceptionHandlerControllerAdvice {
 
         return "404";
     }
+    */
+
 }
