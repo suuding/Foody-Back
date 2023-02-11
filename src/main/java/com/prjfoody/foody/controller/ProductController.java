@@ -59,16 +59,11 @@ public class ProductController implements Controllers<Product> {
 
         List<Product> products = service.select(product, userFromRequest.convert(request));
         if(products.size() > 0){
-            model.addAttribute("products", products);
+            model.addAttribute("productList", products);
         }
-
+        model.addAttribute("category",product.getCategory());
 
         return "/src-thymeleaf/html/product/product";
-    }
-
-    @GetMapping("/product/event")
-    public String event() {
-        return "/src-thymeleaf/html/product/event";
     }
 
     // todo: 상품등록 페이지 필요

@@ -25,7 +25,7 @@
 
     <div class="container">
       <div class="product-category">
-        <div class="title">수산</div>
+        <div class="title" th:text="${category}">수산</div>
         <div class="detail">
           <div class="count">총 20개</div>
           <ul class="nav">
@@ -46,18 +46,27 @@
       </div>
       <!-- Product List를 받아와 각각에 해당하는 데이터를 들고옴 -->
       <div
+              class="recommand-product"
+              style="
+            width: 69rem;
+            display: flex;
+            flex-flow:wrap;
+            margin:auto auto;
+          "
+      >
+      <div
         th:each="product, status: ${productList}"
         class="product-column"
-        style="width: 72rem"
+        style="width: 25%"
       >
         <div class="product-box" style="width: 16rem">
           <a
-            th:href="${'../product/goods?id=' + product.id}"
+            th:href="${'../product/' + product.id}"
             href="../product/goods.html"
           >
             <div class="product-box__img">
               <img
-                th:src="${'../image/product/' + product.image}"
+                th:src="${'/image/product/' + product.id + '.jpg'}"
                 src="a.png"
               />
               <div class="basket-icon">
@@ -65,7 +74,7 @@
               </div>
             </div>
             <div class="product-box__price">
-              <div th:text="${product.name}" class="product-box__title">
+              <div th:text="${product.title}" class="product-box__title">
                 [풀무원]두부
               </div>
               <div>
@@ -106,6 +115,7 @@
           </li>
         </ul>
       </nav>
+    </div>
     </div>
     <footer
       th:insert="~{src-thymeleaf/html/component/footer :: footer}"
