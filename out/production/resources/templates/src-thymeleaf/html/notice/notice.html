@@ -32,7 +32,15 @@
     </div>
 
     <div class="service-content">
-        <div class="title">1:1문의</div>
+        <div class="title">공지사항</div>
+        <button style="
+              width: 10rem;
+              background-color: pink;
+              color: white;
+              border-color: pink;
+              height: 2.5rem;
+              border-radius: 0.5rem;
+            "><a th:href="@{../notice/create}">작성하기</a></button>
         <div class="table-screen">
             <table class="table">
                 <thead>
@@ -54,7 +62,6 @@
             </table>
         </div>
 
-        <button><a th:href="@{../notice/create}">문의 글</a></button>
         </form>
     </div>
 </div>

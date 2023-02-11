@@ -34,13 +34,10 @@ public class NoticeServices implements Services<Notice> {
     @Override
     public Boolean create(Notice notice, Users user) {
         //관리자만 공지 글 생성 가능
-        if (user.getUserType() == UserType.ADMIN) {
-            notice.initStuff(user);
+        notice.initStuff(user);
 
-            return repository.create(notice, user);
-        }
+        return repository.create(notice, user);
 
-        return false;
     }
 
     @Override
@@ -58,10 +55,6 @@ public class NoticeServices implements Services<Notice> {
     @Override
     public Boolean delete(Long id, Users user) {
 
-        if (user.getUserType() == UserType.ADMIN) {
-            return repository.delete(id, user);
-        }
-
-        return false;
+        return repository.delete(id, user);
     }
 }

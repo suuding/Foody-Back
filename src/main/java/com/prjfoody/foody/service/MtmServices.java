@@ -57,17 +57,17 @@ public class MtmServices implements Services<Mtm> {
     @Override
     public Boolean delete(Long id, Users user) {
 
-        if(!validation.validUser(user))
-            return false;
+        //if(!validation.validUser(user))
+        //    return false;
 
         Mtm mtm = new Mtm();
         mtm.setId(id);
         mtm.setOwner(user);
 
         //작성자만 수정가능 (관리자는?)
-        if(validation.validOwnStuff(mtm, user)) {
-            return repository.delete(id, user);
-        }
-        return null;
+        //if(validation.validOwnStuff(mtm, user)) {
+        return repository.delete(id, user);
+        //}
+        //return null;
     }
 }

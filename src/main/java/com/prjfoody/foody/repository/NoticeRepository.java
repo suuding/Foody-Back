@@ -45,6 +45,7 @@ public class NoticeRepository implements Repositories<Notice> {
     public Boolean create(Notice notice, Users user) {
 
         try {
+            em.persist(user);
             em.persist(notice);
 
             return true;
