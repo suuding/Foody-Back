@@ -1,3 +1,9 @@
+.event-screen {
+  margin: auto;
+  margin-top: 250px;
+  width: 1440px;
+}
+
 .event-box {
   margin: 20px;
   width: 1050px;

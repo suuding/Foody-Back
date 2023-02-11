@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/order/order.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/4f20dc6699.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header
+      th:insert="~{src-thymeleaf/html/component/header :: header}"
+    ></header>
+    <div class="order container">
+      <br />
+      <h2>주문서</h2>
+      <div class="product">
+        <h5>주문 상품</h5>
+        <hr />
+        <!-- Product List를 받아와 각각에 해당하는 데이터를 들고옴 -->
+        <div class="basket_content" th:each="product, status: ${productList}">
+          <div class="inform">
+            <!-- 상품 아이디를 받아 goods에 product.id를 변수로 넘겨서 link -->
+            <a th:href="${'../product/goods?id=' + product.id}">
+              <!-- 이미지 url을 받아 product 아래에 있는 이미지를 찾아감 -->
+              <img
+                th:src="${'/image/product/' + product.image}"
+                src="/image/basket_ex1.png"
+              />
+              <label th:text="${product.name}">상품 이름</label>
+            </a>
+          </div>
+          <div class="manipulate">
+            <div class="count_box">
+              <div th:text="${product.quantity}" class="count"><p>1</p></div>
+            </div>
+            <div class="discount_box">
+              <p th:text="${product.salePrice}" id="discount">18000원</p>
+              <p th:text="${product.price}" id="no_discount">20000원</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- user 객체를 받아 각 정보 출력 -->
+        <div th:object="${user}" class="orderer">
+          <h5>주문자 정보</h5>
+          <hr />
+          <div class="orderer_box">
+            <p class="strong">보내는 분</p>
+            <p th:text="*{name}" class="normal">홍길동</p>
+          </div>
+          <div class="orderer_box">
+            <p class="strong">휴대폰</p>
+            <p th:text="*{tel}" class="normal">
+              &nbsp;&nbsp;&nbsp;&nbsp;010-0000-0000
+            </p>
+          </div>
+
+          <div class="orderer_box">
+            <p class="strong">이메일</p>
+            <p th:text="*{email}" class="normal">
+              &nbsp;&nbsp;&nbsp;&nbsp;00000@naver.com
+            </p>
+          </div>
+        </div>
+
+        <div class="order_adress">
+          <h5>배송 정보</h5>
+          <hr />
+          <div class="orderer_box">
+            <p class="strong" style="padding-right: 3rem">배송지</p>
+            <p th:text="*{address}" class="normal">
+              부산광역시 금정구 부산대학로 63번길 2
+            </p>
+          </div>
+        </div>
+
+        <div class="order_pay">
+          <div class="orderer_box">
+            <p class="strong">결제수단 선택</p>
+            <button><i class="fa-solid fa-mobile-screen-button"></i></button>
+            <button style="margin-left: 1rem">
+              <i class="fa-solid fa-credit-card"></i>
+            </button>
+          </div>
+        </div>
+        <div class="order_check">
+          <h5>개인정보 수집/제공</h5>
+          <hr />
+          <div class="order_check_form" style="margin-bottom: 0.5rem">
+            <input type="checkbox" id="all_check" /><lable
+              style="font-size: 1.5rem"
+              >&nbsp;결제 진행 필수 전체 동의</lable
+            >
+          </div>
+          <div class="order_check_form check">
+            <input type="checkbox" required /><lable
+              >&nbsp;(필수)개인정보 수집,이용 및 처리 동의</lable
+            >
+          </div>
+          <div class="order_check_form check">
+            <input type="checkbox" required /><lable
+              >&nbsp;(필수)개인정보 제 3자 제공 동의</lable
+            >
+          </div>
+
+          <div class="order_check_form check">
+            <input type="checkbox" required /><lable
+              >&nbsp;(필수)전자지급 결제대행 서비스 이용약관 동의</lable
+            >
+          </div>
+        </div>
+
+        <!-- post를 통해 주문된 상품들 모두 db에서 판매 처리 -->
+        <!-- 그 후, redirect로 main-page로 이동 -->
+        <form th:action="@{../order/order}" th:method="post" class="final">
+          <button class="final_button">결제하기</button>
+          <p>
+            [주문완료]상태일 경우에만 주문 취소 가능합니다. <br />
+            미성년자가 결제 시 법정대리인이 그 거래를 취소할 수 있습니다.<br />
+            배송 불가 시, 결제수단으로 환불됩니다. 일부 또는 전체 상품이 품절
+            등의 사유로 배송되지 못할 경우, 신속하게 환불해 드리겠습니다. <br />
+            카카오페이,토스,네이버페이,페이코 결제 시, 결제하신 수단으로만
+            환불됩니다.
+          </p>
+        </form>
+      </div>
+    </div>
+    <footer
+      th:insert="~{src-thymeleaf/html/component/footer :: footer}"
+    ></footer>
+  </body>
+</html>

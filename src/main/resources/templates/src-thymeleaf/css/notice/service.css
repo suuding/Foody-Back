@@ -4,7 +4,8 @@ a {
 
 .service {
   display: flex;
-  margin: 40px;
+  margin: auto;
+  margin-top: 250px;
 }
 
 .left-side-bar {

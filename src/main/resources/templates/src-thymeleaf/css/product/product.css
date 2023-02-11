@@ -66,6 +66,12 @@ a {
   text-decoration: none;
 }
 
+.container {
+  margin: auto;
+  margin-top: 250px;
+  width: 1440px;
+}
+
 .product-category {
   padding: 40px;
 }

@@ -1,0 +1,134 @@
+.order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.order h2 {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.order .product h5 {
+  text-align: center;
+}
+.order .product .basket_content {
+  display: flex;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.order .product .basket_content .inform {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.order .product .basket_content .inform input {
+  height: 1rem;
+  width: 2rem;
+  margin-right: 3rem;
+}
+.order .product .basket_content .inform img {
+  width: 15%;
+  margin-left: 1rem;
+}
+.order .product .basket_content .inform label {
+  margin-left: 5%;
+  font-size: 1.2rem;
+}
+.order .product .basket_content .manipulate {
+  float: right;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.order .product .basket_content .manipulate button {
+  background-color: white;
+  border-radius: 0.5rem;
+  border-color: rgb(170, 169, 169);
+}
+.order .product .basket_content .manipulate .count_box {
+  display: flex;
+  justify-content: space-around;
+  width: 10%;
+  align-items: center;
+}
+.order .product .basket_content .manipulate .count_box button {
+  margin: 0 1rem;
+}
+.order .product .basket_content .manipulate p {
+  margin: auto 0;
+}
+.order .product .basket_content .manipulate .discount_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.order .product .basket_content .manipulate .discount_box #no_discount {
+  text-decoration: line-through;
+}
+.order .product .basket_content .manipulate .discount_box #discount {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.order .product .orderer {
+  margin-bottom: 2rem;
+}
+.order .product .orderer .orderer_box {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.order .product .orderer .orderer_box p {
+  padding: 0 1rem;
+}
+.order .product .orderer .orderer_box .strong {
+  font-weight: 700;
+}
+.order .product .order_pay .orderer_box button {
+  height: 2rem;
+  width: 2rem;
+  background-color: white;
+}
+.order .product .order_check .order_check_form {
+  display: flex;
+}
+.order .product .order_check .order_check_form #all_check {
+  width: 1.5rem;
+}
+
+.orderer_box {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.orderer_box p {
+  padding: 0 1rem;
+}
+.orderer_box .strong {
+  font-weight: 700;
+}
+.final_button {
+  font-weight: 600;
+  color: white;
+  font-size: 1.3rem;
+  width: 20rem;
+  height: 3rem;
+  background-color: rgb(248, 155, 155);
+  border-color: rgb(248, 155, 155);
+  border-radius: 0.5rem;
+  margin: 1rem auto;
+}
+
+.final {
+  display: flex;
+  flex-direction: column;
+}
+.final p {
+  text-align: center;
+  color: gray;
+  font-size: 0.7rem;
+}
+
+.order_check_form.check {
+  margin-left: 0.6rem;
+}/*# sourceMappingURL=order.css.map */

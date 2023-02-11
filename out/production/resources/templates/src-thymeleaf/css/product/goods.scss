@@ -1,0 +1,90 @@
+@import "../variables.scss";
+
+.goods-screen {
+  width: $screen-size;
+  margin: auto;
+  display: flex;
+  margin-top: $p1;
+
+  .product-image {
+    width: 430px;
+    height: 552px;
+  }
+
+  .product-detail {
+    margin-left: $f1 * 4;
+    width: 70%;
+
+    .title {
+      font-size: $f1;
+      margin-bottom: $p1 * 2;
+    }
+
+    .price {
+      font-size: $f1;
+      margin-bottom: $p2;
+
+      .discount {
+        color: red;
+      }
+    }
+
+    .real-price {
+      font-size: $f2;
+      text-decoration: line-through;
+      color: rgba(0, 0, 0, 0.3);
+      margin-bottom: $p1 * 2;
+    }
+
+    .box {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      overflow: hidden;
+      width: 100%;
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      font-size: $f2;
+      padding: $p2;
+
+      .left {
+        width: 25%;
+        height: 100%;
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .count {
+      display: flex;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.1);
+      width: 60%;
+
+      .current-count {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      button {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: $f1;
+        border: none;
+      }
+    }
+    .basket-button {
+      margin-bottom: 1rem;
+      width: 20rem;
+      color: white;
+      background-color: $color2;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      border-color: $color2;
+    }
+  }
+}

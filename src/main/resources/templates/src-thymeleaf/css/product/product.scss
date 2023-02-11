@@ -6,6 +6,12 @@ a {
   text-decoration: none;
 }
 
+.container {
+  margin: auto;
+  margin-top: $margin-top;
+  width: $screen-size;
+}
+
 .product-category {
   padding: $p1;
 

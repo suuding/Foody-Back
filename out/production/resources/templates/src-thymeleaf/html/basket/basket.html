@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/basket/basket.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/4f20dc6699.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header th:insert="~{src-thymeleaf/html/component/header :: header}"></header>
+    <div class="container">
+      <br />
+      <h1>장바구니</h1>
+      <div class="basket_box">
+        <div class="basket_top">
+          <input class="top_check" type="checkbox" />
+          <label>전체 선택</label>
+          <p>선택 삭제</p>
+        </div>
+
+        <hr />
+
+        <!-- Product List를 받아와 각각에 해당하는 데이터를 들고옴 -->
+        <div class="basket_content" th:each="product, status: ${productList}">
+          <div class="inform">
+            <input type="checkbox" />
+            <!-- 상품 아이디를 받아 goods에 product.id를 변수로 넘겨서 link -->
+            <a th:href="${'../product/goods?id=' + product.id}">
+              <!-- 이미지 url을 받아 product 아래에 있는 이미지를 찾아감 -->
+              <img
+                th:src="${'/image/product/' + product.image}"
+                src="/image/basket_ex1.png"
+              />
+              <label th:text="${product.name}">상품 이름</label>
+            </a>
+          </div>
+          <div class="manipulate">
+            <div class="count_box">
+              <button>
+                <i class="fa-solid fa-minus"></i>
+              </button>
+              <div th:text="${product.quantity}" class="count"><p>1</p></div>
+              <button><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="discount_box">
+              <p th:text="${product.salePrice}" id="discount">18000원</p>
+              <p th:text="${product.price}" id="no_discount">20000원</p>
+            </div>
+            <button>
+              <i class="fa-solid fa-x"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="basket_order">
+        <!-- user 정보 받아서 주소값 들고오기 -->
+        <div th:object="${user}" class="adress">
+          <h3>배송지</h3>
+          <p th:text="*{address}">부산광역시 금정구 부산대학로 63번길 2</p>
+          <button>배송지변경</button>
+        </div>
+
+        <!-- 주문 총 결산 객체에서 전체 가격, 할인 가격, 배송비, 총 합산을 들고옴 -->
+        <div th:object="${priceSum}" class="pay">
+          <div class="paybox">
+            <p>상품 금액</p>
+            <p th:text="${priceSum.price + '원'}">60000원</p>
+          </div>
+          <div class="paybox">
+            <p>상품 할인 금액</p>
+            <p th:text="${priceSum.discount + '원'}">54000원</p>
+          </div>
+          <div class="paybox">
+            <p>베송비</p>
+            <p th:text="${priceSum.delivery + '원'}">0원</p>
+          </div>
+          <div class="paybox" id="paybox4">
+            <p>결제 예정 금액</p>
+            <p th:text="${priceSum.sum + '원'}">54000원</p>
+          </div>
+
+          <!-- form을 통해 order 링크로 이동하며, 현재 장바구니 데이터를 모두 order로 이동 -->
+          <form th:action="@{../order/order}" th:method="get">
+            <button>주문하기</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer th:insert="~{src-thymeleaf/html/component/footer :: footer}"></footer>
+  </body>
+</html>
