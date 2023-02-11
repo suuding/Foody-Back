@@ -83,7 +83,7 @@ public class MtmController implements Controllers<Mtm> {
             System.out.println("null아님: "+mtm.getContent());
             if (service.create(mtm, user)) {
                 model.addAttribute("mtm", mtm);
-                return "src-thymeleaf/html/mtm/mtm";
+                return "redirect:/mtm";
             }
         } else {
             Users users= new Users();
@@ -91,11 +91,11 @@ public class MtmController implements Controllers<Mtm> {
 
             if (service.create(mtm, users)) {
                 model.addAttribute("mtm", mtm);
-                return "src-thymeleaf/html/mtm/mtm";
+                return "redirect:/mtm";
             }
         }
 
-        return "src-thymeleaf/html/mtm/write";
+        return "redirect:/mtm";
     }
 
     @GetMapping("/mtm/update/{id}")
@@ -137,19 +137,25 @@ public class MtmController implements Controllers<Mtm> {
     }
 
     //글 삭제
-    @PostMapping("/mtm/delete/{id}")
+    @GetMapping("/mtm/delete/{id}")
     @Override
     public String delete(@PathVariable Long id, HttpServletRequest request) {
 
         Users user = userFromRequest.convert(request);
 
-        if (user.getUserType() != UserType.ANONY) {
+        if (user != null) {
             if (service.delete(id, user)) {
-                return "createMtm";
+                return "redirect:/mtm";
+            }
+        } else {
+            Users users = new Users();
+            users.setName("수딩");
+            if (service.delete(id, users)) {
+                return "redirect:/mtm";
             }
         }
 
-        return "select";
+        return "redirect:/mtm";
     }
 
 }
