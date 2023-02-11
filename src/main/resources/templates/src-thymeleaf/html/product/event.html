@@ -16,7 +16,9 @@
     <title>event</title>
   </head>
   <body>
-    <header th:insert="~{src-thymeleaf/html/component/header :: header}"></header>
+    <header
+      th:insert="~{src-thymeleaf/html/component/header :: header}"
+    ></header>
     <!-- Event List를 받아옴 -->
     <div th:each="event, status: ${eventList}">
       <div class="event-box">
@@ -30,6 +32,8 @@
         </div>
       </div>
     </div>
-    <footer th:insert="~{src-thymeleaf/html/component/footer :: footer}"></footer>
+    <footer
+      th:insert="~{src-thymeleaf/html/component/footer :: footer}"
+    ></footer>
   </body>
 </html>

@@ -16,7 +16,9 @@
     <title>mtm</title>
   </head>
   <body>
-    <header th:insert="~{../component :: header}"></header>
+    <header
+      th:insert="~{src-thymeleaf/html/component/header :: header}"
+    ></header>
     <div class="container service">
       <div class="left-side-bar">
         <div class="title">고객센터</div>
@@ -55,6 +57,8 @@
         </form>
       </div>
     </div>
-    <footer th:insert="~{../component :: footer}"></footer>
+    <footer
+      th:insert="~{src-thymeleaf/html/component/footer :: footer}"
+    ></footer>
   </body>
 </html>

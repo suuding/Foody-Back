@@ -16,15 +16,18 @@
     <title>mypage</title>
   </head>
   <body>
+    <header
+      th:insert="~{src-thymeleaf/html/component/header :: header}"
+    ></header>
     <div class="mypage-screen">
       <div class="left-side-bar">
         <div class="title">고객센터</div>
         <nav class="content">
-          <a href="purchased.html">주문내역</a>
-          <a href="mypage.html">개인정보 수정</a>
+          <a th:href="purchased">주문내역</a>
+          <a th:href="mypage">개인정보 수정</a>
         </nav>
       </div>
-      <form class="mypage-form">
+      <form th:object="" class="mypage-form">
         <legend>개인정보 수정</legend>
         <hr />
         <fieldset class="register_fieldset">
@@ -111,5 +114,8 @@
         </fieldset>
       </form>
     </div>
+    <footer
+      th:insert="~{src-thymeleaf/html/component/footer :: footer}"
+    ></footer>
   </body>
 </html>

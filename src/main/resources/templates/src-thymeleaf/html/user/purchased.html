@@ -24,6 +24,9 @@
     <title>purchased</title>
   </head>
   <body>
+    <header
+      th:insert="~{src-thymeleaf/html/component/header :: header}"
+    ></header>
     <div class="purchased-screen">
       <div class="left-side-bar">
         <div class="title">고객센터</div>
@@ -94,5 +97,8 @@
         </div>
       </div>
     </div>
+    <footer
+      th:insert="~{src-thymeleaf/html/component/footer :: footer}"
+    ></footer>
   </body>
 </html>

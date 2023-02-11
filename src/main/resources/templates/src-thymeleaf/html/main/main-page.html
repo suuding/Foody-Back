@@ -23,7 +23,9 @@
     ></script>
   </head>
   <body>
-    <header th:insert="~{src-thymeleaf/html/component/header :: header}"></header>
+    <header
+      th:insert="~{src-thymeleaf/html/component/header :: header}"
+    ></header>
     <!-- <header class="container-fluid">
       <nav class="container top_header">
         <ul class="th_ul">
@@ -101,7 +103,7 @@
               >
                 <div class="product-box__img">
                   <img
-                    th:src="${'/image/product/' + product.image}"
+                    th:src="${'../image/product/' + product.image}"
                     src="a.png"
                   />
                   <div class="basket-icon">
@@ -114,7 +116,7 @@
                   </div>
                   <div>
                     <span
-                      th:text="${product.discount}"
+                      th:text="${product.saleRate}"
                       class="product-box__discount"
                       >80%</span
                     >
@@ -136,7 +138,12 @@
           </div>
         </div>
       </div>
-      <div class="container-fluid">
+
+      <footer
+        th:insert="~{src-thymeleaf/html/component/footer :: footer}"
+      ></footer>
+
+      <!-- <div class="container-fluid">
         <hr />
         <div class="container footer" style="padding-left: 5rem">
           <nav class="top_footer">
@@ -167,7 +174,7 @@
           </div>
           <br /><br />
         </div>
-      </div>
+      </div> -->
     </div>
   </body>
 </html>

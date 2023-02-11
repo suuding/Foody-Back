@@ -16,6 +16,9 @@
     <title>register</title>
   </head>
   <body>
+    <header
+      th:insert="~{src-thymeleaf/html/component/header :: header}"
+    ></header>
     <div class="container">
       <form class="register_form">
         <legend>회원가입</legend>
@@ -63,47 +66,39 @@
           </div>
           <div class="register_input">
             <label>이메일</label>
-            <input type="email" placeholder="이메일 입력해주세요" required/>
+            <input type="email" placeholder="이메일 입력해주세요" required />
           </div>
 
           <div class="register_input">
             <label>휴대폰</label>
-            <input type="tel" placeholder="숫자만 입력해주세요"required />
+            <input type="tel" placeholder="숫자만 입력해주세요" required />
           </div>
           <div class="register_input">
             <label>주소</label>
-            <input type="text" placeholder="주소를 입력해주세요"required />
+            <input type="text" placeholder="주소를 입력해주세요" required />
           </div>
           <div class="register_input">
             <label>성별</label>
-              <div class="male" id="male1">
-                <input
-                  type="radio"
-                  name="male"
-                  value="male"
-                  checked
-                />
-                <label>남성</label>
-              </div>
+            <div class="male" id="male1">
+              <input type="radio" name="male" value="male" checked />
+              <label>남성</label>
+            </div>
 
-              <div class="male" id="male2">
-                <input type="radio"  name="male" value="male" />
-                <label for="female">여성</label>
-              </div>
-
-              </div>
-              <div class="register_input">
-                <label>생년월일</label>
-                <input type="date" required/>
-              </div>
-              <button type="submit">회원가입하기</button>
-              
-        
-              
-            </fieldset>
+            <div class="male" id="male2">
+              <input type="radio" name="male" value="male" />
+              <label for="female">여성</label>
+            </div>
           </div>
+          <div class="register_input">
+            <label>생년월일</label>
+            <input type="date" required />
+          </div>
+          <button type="submit">회원가입하기</button>
         </fieldset>
       </form>
     </div>
+    <footer
+      th:insert="~{src-thymeleaf/html/component/footer :: footer}"
+    ></footer>
   </body>
 </html>

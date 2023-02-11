@@ -25,7 +25,9 @@
     </style>
   </head>
   <body>
-    <header th:insert="~{../component :: header}"></header>
+    <header
+      th:insert="~{src-thymeleaf/html/component/header :: header}"
+    ></header>
     <!-- 글 객체를 가져옴 -->
     <div th:object="${notice}" class="container read">
       <div class="read_title">
@@ -121,6 +123,8 @@
         </form>
       </div>
     </div>
-    <footer th:insert="~{../component :: footer}"></footer>
+    <footer
+      th:insert="~{src-thymeleaf/html/component/footer :: footer}"
+    ></footer>
   </body>
 </html>

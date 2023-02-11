@@ -23,7 +23,9 @@
     ></script>
   </head>
   <body>
-    <header th:insert="~{../component :: header}"></header>
+    <header
+      th:insert="~{src-thymeleaf/html/component/header :: header}"
+    ></header>
     <div class="order container">
       <br />
       <h2>주문서</h2>
@@ -139,6 +141,8 @@
         </form>
       </div>
     </div>
-    <footer th:insert="~{../component :: footer}"></footer>
+    <footer
+      th:insert="~{src-thymeleaf/html/component/footer :: footer}"
+    ></footer>
   </body>
 </html>

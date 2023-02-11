@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,6 +16,10 @@
     <title>product</title>
   </head>
   <body>
+    <header
+      th:insert="~{src-thymeleaf/html/component/header :: header}"
+    ></header>
+
     <div class="container">
       <div class="product-category">
         <div class="title">수산</div>
@@ -37,182 +41,47 @@
           </ul>
         </div>
       </div>
-      <div class="product-column" style="width: 73rem">
-        <div class="product-box" style="width: 19rem">
-          <div class="product-box__img">
-            <img src="a.png" />
-            <div class="basket-icon">
-              <i class="bi bi-cart"></i>
+      <!-- Product List를 받아와 각각에 해당하는 데이터를 들고옴 -->
+      <div
+        th:each="product, status: ${productList}"
+        class="product-column"
+        style="width: 72rem"
+      >
+        <div class="product-box" style="width: 16rem">
+          <a
+            th:href="${'../product/goods?id=' + product.id}"
+            href="../product/goods.html"
+          >
+            <div class="product-box__img">
+              <img
+                th:src="${'../image/product/' + product.image}"
+                src="a.png"
+              />
+              <div class="basket-icon">
+                <i class="bi bi-cart"></i>
+              </div>
             </div>
-          </div>
-          <div class="product-box__price">
-            <div class="product-box__title">[풀무원]두부</div>
-            <div>
-              <span class="product-box__discount">80%</span>
-              <span class="product-box__sale-price">1,500원</span>
+            <div class="product-box__price">
+              <div th:text="${product.name}" class="product-box__title">
+                [풀무원]두부
+              </div>
+              <div>
+                <span
+                  th:text="${product.saleRate}"
+                  class="product-box__discount"
+                  >80%</span
+                >
+                <span
+                  th:text="${product.salePrice}"
+                  class="product-box__sale-price"
+                  >1,500원</span
+                >
+              </div>
+              <div th:text="${product.price}" class="product-box__real-price">
+                1,800원
+              </div>
             </div>
-            <div class="product-box__real-price">1,800원</div>
-          </div>
-        </div>
-        <div class="product-box">
-          <div class="product-box__img">
-            <img src="a.png" />
-            <div class="basket-icon">
-              <i class="bi bi-cart"></i>
-            </div>
-          </div>
-          <div class="product-box__price">
-            <div class="product-box__title">[풀무원]두부</div>
-            <div>
-              <span class="product-box__discount">80%</span>
-              <span class="product-box__sale-price">1,500원</span>
-            </div>
-            <div class="product-box__real-price">1,800원</div>
-          </div>
-        </div>
-        <div class="product-box">
-          <div class="product-box__img">
-            <img src="a.png" />
-            <div class="basket-icon">
-              <i class="bi bi-cart"></i>
-            </div>
-          </div>
-          <div class="product-box__price">
-            <div class="product-box__title">[풀무원]두부</div>
-            <div>
-              <span class="product-box__discount">80%</span>
-              <span class="product-box__sale-price">1,500원</span>
-            </div>
-            <div class="product-box__real-price">1,800원</div>
-          </div>
-        </div>
-        <div class="product-box">
-          <div class="product-box__img">
-            <img src="a.png" />
-            <div class="basket-icon">
-              <i class="bi bi-cart"></i>
-            </div>
-          </div>
-          <div class="product-box__price">
-            <div class="product-box__title">[풀무원]두부</div>
-            <div>
-              <span class="product-box__discount">80%</span>
-              <span class="product-box__sale-price">1,500원</span>
-            </div>
-            <div class="product-box__real-price">1,800원</div>
-          </div>
-        </div>
-        <div class="product-box">
-          <div class="product-box__img">
-            <img src="a.png" />
-            <div class="basket-icon">
-              <i class="bi bi-cart"></i>
-            </div>
-          </div>
-          <div class="product-box__price">
-            <div class="product-box__title">[풀무원]두부</div>
-            <div>
-              <span class="product-box__discount">80%</span>
-              <span class="product-box__sale-price">1,500원</span>
-            </div>
-            <div class="product-box__real-price">1,800원</div>
-          </div>
-        </div>
-        <div class="product-box">
-          <div class="product-box__img">
-            <img src="a.png" />
-            <div class="basket-icon">
-              <i class="bi bi-cart"></i>
-            </div>
-          </div>
-          <div class="product-box__price">
-            <div class="product-box__title">[풀무원]두부</div>
-            <div>
-              <span class="product-box__discount">80%</span>
-              <span class="product-box__sale-price">1,500원</span>
-            </div>
-            <div class="product-box__real-price">1,800원</div>
-          </div>
-        </div>
-        <div class="product-box">
-          <div class="product-box__img">
-            <img src="a.png" />
-            <div class="basket-icon">
-              <i class="bi bi-cart"></i>
-            </div>
-          </div>
-          <div class="product-box__price">
-            <div class="product-box__title">[풀무원]두부</div>
-            <div>
-              <span class="product-box__discount">80%</span>
-              <span class="product-box__sale-price">1,500원</span>
-            </div>
-            <div class="product-box__real-price">1,800원</div>
-          </div>
-        </div>
-        <div class="product-box">
-          <div class="product-box__img">
-            <img src="a.png" />
-            <div class="basket-icon">
-              <i class="bi bi-cart"></i>
-            </div>
-          </div>
-          <div class="product-box__price">
-            <div class="product-box__title">[풀무원]두부</div>
-            <div>
-              <span class="product-box__discount">80%</span>
-              <span class="product-box__sale-price">1,500원</span>
-            </div>
-            <div class="product-box__real-price">1,800원</div>
-          </div>
-        </div>
-        <div class="product-box">
-          <div class="product-box__img">
-            <img src="a.png" />
-            <div class="basket-icon">
-              <i class="bi bi-cart"></i>
-            </div>
-          </div>
-          <div class="product-box__price">
-            <div class="product-box__title">[풀무원]두부</div>
-            <div>
-              <span class="product-box__discount">80%</span>
-              <span class="product-box__sale-price">1,500원</span>
-            </div>
-            <div class="product-box__real-price">1,800원</div>
-          </div>
-        </div>
-        <div class="product-box">
-          <div class="product-box__img">
-            <img src="a.png" />
-            <div class="basket-icon">
-              <i class="bi bi-cart"></i>
-            </div>
-          </div>
-          <div class="product-box__price">
-            <div class="product-box__title">[풀무원]두부</div>
-            <div>
-              <span class="product-box__discount">80%</span>
-              <span class="product-box__sale-price">1,500원</span>
-            </div>
-            <div class="product-box__real-price">1,800원</div>
-          </div>
-        </div>
-        <div class="product-box">
-          <div class="product-box__img">
-            <img src="a.png" />
-            <div class="basket-icon">
-              <i class="bi bi-cart"></i>
-            </div>
-          </div>
-          <div class="product-box__price">
-            <div class="product-box__title">[풀무원]두부</div>
-            <div>
-              <span class="product-box__discount">80%</span>
-              <span class="product-box__sale-price">1,500원</span>
-            </div>
-            <div class="product-box__real-price">1,800원</div>
-          </div>
+          </a>
         </div>
       </div>
       <nav aria-label="Page navigation example">
@@ -235,5 +104,8 @@
         </ul>
       </nav>
     </div>
+    <footer
+      th:insert="~{src-thymeleaf/html/component/footer :: footer}"
+    ></footer>
   </body>
 </html>
