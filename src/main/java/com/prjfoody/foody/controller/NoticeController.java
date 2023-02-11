@@ -83,7 +83,7 @@ public class NoticeController implements Controllers<Notice>{
             if (service.create(notice, user)) {
                 model.addAttribute("notice", notice);
 
-                return "src-thymeleaf/html/notice/notice";
+                return "redirect:/notice";
             }
         } else {
             Users users= new Users();
@@ -91,10 +91,10 @@ public class NoticeController implements Controllers<Notice>{
 
             if (service.create(notice, users)) {
                 model.addAttribute("notice", notice);
-                return "src-thymeleaf/html/notice/notice";
+                return "redirect:/notice";
             }
         }
-        return "src-thymeleaf/html/notice/write";
+        return "redirect:/notice";
     }
 
     @GetMapping("/notice/update/{id}")
@@ -134,17 +134,24 @@ public class NoticeController implements Controllers<Notice>{
         return "notices";
     }
 
-    @PostMapping("/notice/delete/{id}")
+    @GetMapping("/notice/delete/{id}")
     @Override
     public String delete(@PathVariable Long id, HttpServletRequest request) {
 
         Users user = userFromRequest.convert(request);
 
-        if (user.getUserType() == UserType.ADMIN) {
+        if (user != null) {
             if (service.delete(id, user)) {
-                return "notices";
+                return "redirect:/notice";
+            }
+        } else {
+            Users users = new Users();
+            users.setName("수딩");
+            if (service.delete(id, users)) {
+                return "redirect:/notice";
             }
         }
-        return "notices";
+
+        return "redirect:/notice";
     }
 }

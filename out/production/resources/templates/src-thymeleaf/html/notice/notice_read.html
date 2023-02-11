@@ -125,16 +125,24 @@
           class="button"
           style="display: flex; justify-content: flex-end"
         >
-          <button
-            style="
+          <button style="
               width: 10rem;
               background-color: pink;
               color: white;
               border-color: pink;
               height: 2.5rem;
               border-radius: 0.5rem;
-            "
-          >
+            "> <a th:href="${'../notice/delete/' + notice.id}">
+            삭제
+          </a> </button>
+          <button style="
+              width: 10rem;
+              background-color: pink;
+              color: white;
+              border-color: pink;
+              height: 2.5rem;
+              border-radius: 0.5rem;
+            ">
             목록
           </button>
           <br />
