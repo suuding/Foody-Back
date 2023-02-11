@@ -19,7 +19,7 @@
       th:insert="~{src-thymeleaf/html/component/header :: header}"
     ></header>
     <div class="container login_layout">
-      <form class="login_form">
+      <form class="login_form" th:action="@{/user/login}" method="post">
         <legend>로그인</legend>
         <fieldset class="login_field">
           <input type="id" placeholder="아이디" required />

@@ -41,57 +41,23 @@
         </div>
 
         <hr />
-        <div class="basket_content">
-          <div class="inform">
-            <img src="/image/basket_ex1.png" a href="#" />
-            <label>상품 이름</label>
-          </div>
-          <div class="manipulate">
-            <div class="count_box">
-              <div class="count">
-                <span>수량 :</span>
-                <span>1</span>
+        <div th:each="product, status: ${productList}">
+          <div class="basket_content">
+            <div class="inform">
+              <img src="/image/basket_ex1.png" a href="#" />
+              <label th:text="${product.name}">상품 이름</label>
+            </div>
+            <div class="manipulate">
+              <div class="count_box">
+                <div class="count">
+                  <span>수량 :</span>
+                  <span th:text="${product.count}">1</span>
+                </div>
               </div>
-            </div>
-            <div class="discount_box">
-              <p id="discount">18000원</p>
-              <p id="no_discount">20000원</p>
-            </div>
-          </div>
-        </div>
-        <div class="basket_content">
-          <div class="inform">
-            <img src="/image/basket_ex1.png" a href="#" />
-            <label>상품 이름</label>
-          </div>
-          <div class="manipulate">
-            <div class="count_box">
-              <div class="count">
-                <span>수량 :</span>
-                <span>1</span>
+              <div class="discount_box">
+                <p th:text="${product.salePrice}" id="discount">18000원</p>
+                <p th:text="${product.price}" id="no_discount">20000원</p>
               </div>
-            </div>
-            <div class="discount_box">
-              <p id="discount">18000원</p>
-              <p id="no_discount">20000원</p>
-            </div>
-          </div>
-        </div>
-        <div class="basket_content">
-          <div class="inform">
-            <img src="/image/basket_ex1.png" a href="#" />
-            <label>상품 이름</label>
-          </div>
-          <div class="manipulate">
-            <div class="count_box">
-              <div class="count">
-                <span>수량 :</span>
-                <span>1</span>
-              </div>
-            </div>
-            <div class="discount_box">
-              <p id="discount">18000원</p>
-              <p id="no_discount">20000원</p>
             </div>
           </div>
         </div>

@@ -27,13 +27,19 @@
           <a th:href="mypage">개인정보 수정</a>
         </nav>
       </div>
-      <form th:object="" class="mypage-form">
+      <form
+        th:object="${user}"
+        th:action="@{/user/mypage}"
+        th:method="post"
+        class="mypage-form"
+      >
         <legend>개인정보 수정</legend>
         <hr />
         <fieldset class="register_fieldset">
           <div class="register_input">
             <label>아이디</label>
             <input
+              th:value="${user.id}"
               type="id"
               placeholder="아이디를 입력해주세요 "
               maxlength="12"
@@ -44,6 +50,7 @@
           <div class="register_input">
             <label>현재 비밀번호</label>
             <input
+              th:value="${user.password}"
               type="password"
               placeholder="비밀번호를 입력해주세요"
               maxlength="12"
@@ -54,6 +61,7 @@
           <div class="register_input">
             <label>새 비밀번호</label>
             <input
+              th:value="${newpassword}"
               type="password"
               placeholder="비밀번호를 입력해주세요"
               maxlength="12"
@@ -64,6 +72,7 @@
           <div class="register_input">
             <label>새 비밀번호 확인</label>
             <input
+              th:value="${newpassword}"
               type="password"
               placeholder="비밀번호를 한번 더 입력해주세요"
               maxlength="12"
@@ -74,6 +83,7 @@
           <div class="register_input">
             <label>이름</label>
             <input
+              th:value="${user.name}"
               type="name"
               placeholder="이름을 입력해주세요"
               maxlength="10"
