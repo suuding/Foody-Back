@@ -38,6 +38,10 @@ public class UserRepository implements Repositories<Users> {
         if(users.getId()!= null)
             builder.and(qUsers.id.eq(users.getId()));
 
+        System.out.println("users.getId() = " + users.getId());
+        System.out.println(" = " + users.getName());
+        System.out.println(" = " + users.getPasswd());
+
         if (users.getName() != null && users.getPasswd() != null) {
             builder.and(qUsers.name.eq(users.getName()));
             builder.and(qUsers.passwd.eq(user.getPasswd()));

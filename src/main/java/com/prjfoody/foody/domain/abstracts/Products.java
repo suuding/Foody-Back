@@ -25,7 +25,7 @@ public abstract class Products extends Stuff {
         if (this.price <= 0 || this.salePrice <= 0)
             return;
 
-        float saleRate = (float) (1 - this.salePrice / this.price) * 100;
+        float saleRate =  (float)Math.floor((double) (1 - (float)this.salePrice / (float)this.price) * 100);
         this.setSaleRate(saleRate);
 
         this.setSaleStatus(saleRate > 0);

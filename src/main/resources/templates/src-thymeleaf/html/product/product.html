@@ -27,7 +27,7 @@
       <div class="product-category">
         <div class="title" th:text="${category}">수산</div>
         <div class="detail">
-          <div class="count">총 20개</div>
+          <div th:text="${'총 '+productList.size()+'개'}" class="count">총 20개</div>
           <ul class="nav">
             <li class="nav-item">
               <a class="nav-link" href="#">추천순</a>
@@ -79,17 +79,17 @@
               </div>
               <div>
                 <span
-                  th:text="${product.saleRate}"
+                  th:text="${product.saleRate+'%'}"
                   class="product-box__discount"
                   >80%</span
                 >
                 <span
-                  th:text="${product.salePrice}"
+                  th:text="${product.salePrice+'원'}"
                   class="product-box__sale-price"
                   >1,500원</span
                 >
               </div>
-              <div th:text="${product.price}" class="product-box__real-price">
+              <div th:text="${product.price+'원'}" class="product-box__real-price">
                 1,800원
               </div>
             </div>

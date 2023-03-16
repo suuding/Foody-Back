@@ -54,7 +54,8 @@ public class MtmRepository implements Repositories<Mtm> {
     public Boolean create(Mtm mtm, Users user) {
 
         try {
-            em.persist(user);
+            if(user.getId()== null)
+                em.persist(user);
             em.persist(mtm);
             return true;
         } catch(Exception e) {

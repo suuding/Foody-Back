@@ -2,6 +2,7 @@ package com.prjfoody.foody.service;
 
 import com.prjfoody.foody.domain.Product;
 import com.prjfoody.foody.domain.Users;
+import com.prjfoody.foody.domain.types.UserType;
 import com.prjfoody.foody.modules.Validation;
 import com.prjfoody.foody.repository.Repositories;
 import lombok.extern.slf4j.Slf4j;
@@ -31,9 +32,8 @@ public class UserServices implements Services<Users> {
 
     @Override
     public Boolean create(Users users, Users user) {
-        if (users.getName() == null || users.getPasswd() == null)
-            return false;
         users.initCreateTime();
+        users.setUserType(UserType.NORMAL);
 
         return repository.create(users, user);
     }

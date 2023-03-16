@@ -17,13 +17,14 @@ public class ExceptionHandlerControllerAdvice {
         return "main";
     }
 
+ */
 
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handle404(){
         log.warn("404 Not Found Occur!!!");
 
-        return "404";
+        return "error";
     }
 
     @ExceptionHandler(Exception.class)
@@ -31,8 +32,7 @@ public class ExceptionHandlerControllerAdvice {
     public String handle400(){
         log.warn("400 Bad Request Occur!!!");
 
-        return "404";
+        return "error";
     }
 
- */
 }

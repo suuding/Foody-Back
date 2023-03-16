@@ -1,5 +1,6 @@
 package com.prjfoody.foody.controller;
 
+import com.prjfoody.foody.domain.Mtm;
 import com.prjfoody.foody.domain.Notice;
 import com.prjfoody.foody.domain.Users;
 import com.prjfoody.foody.domain.types.UserType;
@@ -51,10 +52,16 @@ public class NoticeController implements Controllers<Notice>{
     @Override
     public String select(@ModelAttribute Notice notice, Model model, HttpServletRequest request) {
 
+        Users users = new Users();
+
         if (notice == null)
             notice = new Notice();
 
-        List<Notice> notices = service.select(notice, new Users());
+        Users sessionUser = userFromRequest.convert(request);
+        if (sessionUser != null)
+            users = sessionUser;
+
+        List<Notice> notices = service.select(notice, users);
         model.addAttribute("notices", notices);
 
         //공지글 목록 페이지
@@ -63,12 +70,18 @@ public class NoticeController implements Controllers<Notice>{
 
     //사용자가 요청한 '공지 글 쓰기 페이지' 불러오는
     @GetMapping("/notice/create")
-    public String create(Model model) {
+    public String create( Model model, HttpServletRequest request ) {
 
-        model.addAttribute("notice", new Notice());
+        Users users = userFromRequest.convert(request);
 
-        //공지글 생성 페이지
-        return "src-thymeleaf/html/notice/write";
+        if ( users != null && users.getId() != null && users.getUserType() == UserType.ADMIN ) {
+            model.addAttribute("notice", new Notice());
+
+            //문의글 생성(작성) 페이지
+            return "src-thymeleaf/html/notice/write";
+        }
+
+        return "redirect:/notice";
     }
 
     @PostMapping("/notice/create")

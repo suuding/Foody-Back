@@ -21,12 +21,12 @@
       th:insert="~{src-thymeleaf/html/component/header :: header}"
     ></header>
     <div class="container login_layout">
-      <form class="login_form" th:action="@{/user/login}" method="post">
+      <form class="login_form" th:object="${users}" th:action="@{/login}" method="post">
         <legend>로그인</legend>
         <fieldset class="login_field">
-          <input type="id" placeholder="아이디" required />
-          <input type="password" placeholder="비밀번호" required />
-          <button>로그인</button>
+          <input th:field="*{name}" type="text" placeholder="아이디" required />
+          <input th:field="*{passwd}" type="password" placeholder="비밀번호" required />
+          <button type="submit">로그인</button>
         </fieldset>
         <nav class="inform_find">
           <ul>

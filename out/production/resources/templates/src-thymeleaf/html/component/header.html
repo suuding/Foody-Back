@@ -18,10 +18,13 @@
     <header class="container-fluid" th:fragment="header">
       <nav class="container top_header">
         <ul class="th_ul">
-          <li class="th_li01"><a th:href="@{../user/register}">회원가입</a></li>
-          <li class="th_li02"><a th:href="@{../login}">로그인</a></li>
-          <li class="th_li02">
-            <a th:href="@{../user/mypage}">마이페이지</a>
+          <li class="th_li01"  th:if="${session.ID == null}" ><a th:href="@{../user/register}">회원가입</a></li>
+          <li class="th_li02" th:if="${session.ID == null}" ><a th:href="@{../login}">로그인</a></li>
+          <li class="th_li02" th:if="${session.ID != null}" >
+            <a th:href="@{/logout}">로그아웃</a>
+          </li>
+          <li class="th_li02" th:if="${session.ID != null}" >
+            <a th:href="@{../user}">마이페이지</a>
           </li>
           <li class="th_li03">
             <a th:href="@{../basket}">장바구니</a>
@@ -35,8 +38,8 @@
       <div class="container middle_header">
         <a th:href="@{../}"><img src="/image/logo.png" /></a>
         <form>
-          <input type="search" placeholder="" required />
-          <button type="submit">검색</button>
+          <input id="search-input" type="search" placeholder="" required />
+          <button id="search-button" type="button">검색</button>
         </form>
       </div>
       <hr />
@@ -50,6 +53,7 @@
         </ul>
       </nav>
       <hr id="hr2" />
+      <script src="/js/searchProducts.js"></script>
     </header>
   </body>
 </html>

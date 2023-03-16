@@ -45,7 +45,7 @@ public class InitSampleDB implements CommandLineRunner {
         users.setTel("1234-5678");
         users.setEmail("abcd@gmail.com");
         users.setAddress("부산시 남구");
-        users.setUserType(UserType.ADMIN);
+        users.setUserType(UserType.NORMAL);
 
         List<Product> productList = new ArrayList<>();
 

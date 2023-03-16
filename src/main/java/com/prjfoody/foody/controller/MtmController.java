@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
@@ -52,10 +53,16 @@ public class MtmController implements Controllers<Mtm> {
     @Override
     public String select(@ModelAttribute Mtm mtm, Model model, HttpServletRequest request) {
 
+        Users users = new Users();
+
         if (mtm == null)
             mtm = new Mtm();
 
-        List<Mtm> mtms = service.select(mtm, new Users());
+        Users sessionUser = userFromRequest.convert(request);
+        if (sessionUser != null)
+            users = sessionUser;
+
+        List<Mtm> mtms = service.select(mtm, users);
         model.addAttribute("mtms", mtms);
 
         //문의글 전체 조희 페이지
@@ -63,12 +70,18 @@ public class MtmController implements Controllers<Mtm> {
     }
 
     @GetMapping("/mtm/create")
-    public String create(Model model) {
+    public String create(Model model, HttpServletRequest request) {
 
-        model.addAttribute("mtm", new Mtm());
+        Users users = userFromRequest.convert(request);
 
-        //문의글 생성(작성) 페이지
-        return "src-thymeleaf/html/mtm/write";
+        if (users != null) {
+            model.addAttribute("mtm", new Mtm());
+
+            //문의글 생성(작성) 페이지
+            return "src-thymeleaf/html/mtm/write";
+        }
+
+        return "redirect:/mtm";
     }
 
     //글 등록
@@ -86,13 +99,13 @@ public class MtmController implements Controllers<Mtm> {
                 return "redirect:/mtm";
             }
         } else {
-            Users users= new Users();
-            users.setName("수딩");
-
-            if (service.create(mtm, users)) {
-                model.addAttribute("mtm", mtm);
-                return "redirect:/mtm";
-            }
+            //Users users= new Users();
+            //users.setName("수딩");
+            return "redirect:/mtm";
+            //if (service.create(mtm, users)) {
+                //model.addAttribute("mtm", mtm);
+                //return "redirect:/mtm";
+            //}
         }
 
         return "redirect:/mtm";

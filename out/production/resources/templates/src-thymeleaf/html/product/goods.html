@@ -44,20 +44,19 @@
       <div th:object="${product}" class="goods-screen">
         <img
           class="product-image"
-          th:src="${'/image/product/' + product.image}"
+          th:src="${'/image/product/' + product.id + '.jpg'}"
         />
         <div class="product-detail">
           <div th:text="*{title}" class="title">[푸르밀] 밀면</div>
           <div class="price">
-            <span class="discount">30%</span>
-            <span>1,000</span>
-            <span>원</span>
+            <span th:text="*{saleRate+'%'}" class="discount">30%</span>
+            <span th:text="*{salePrice+'원'}">1,000</span>
           </div>
-          <div th:text="*{price}" class="real-price">1,500원</div>
+          <div th:text="*{price+'원'}" class="real-price">1,500원</div>
           <div class="detail">
             <div class="box">
               <div class="left">판매자</div>
-              <div th:text="*{seller}" class="right">푸르밀</div>
+              <div th:text="*{owner.name}" class="right">푸르밀</div>
             </div>
             <div class="box">
               <div class="left">포장타입</div>
@@ -75,8 +74,8 @@
               <div class="left">원산지</div>
               <div class="right">상품설명/상세정보 참고</div>
             </div>
-
-            <!-- form을 통해 현재 상품 정보 (상품 아이디, 개수)를 넘김 -->
+<!--
+            form을 통해 현재 상품 정보 (상품 아이디, 개수)를 넘김
             <form
               th:object="${order}"
               th:action="@{../basket/basket}"
@@ -99,7 +98,7 @@
                   장바구니에 담기
                 </button>
               </div>
-            </form>
+            </form> -->
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ public class Users extends CreateTime {
     @GeneratedValue
     @Column(name = "userId")
     private Long id;
+    private String loginId;
     private String name;
     private String passwd;
     private String tel;

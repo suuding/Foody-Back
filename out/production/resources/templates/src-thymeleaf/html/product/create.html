@@ -38,12 +38,12 @@
         <fieldset class="register_fieldset">
           <div class="register_input">
             <label>상품 이미지</label>
-            <input th:field="*{image}" type="file" />
+            <input th:field="*{productImageUrl}" type="file" />
           </div>
           <div class="register_input">
             <label>상품 이름</label>
             <input
-              th:field="*{name}"
+              th:field="*{title}"
               type="text"
               placeholder="상품 이름을 입력해주세요"
               required
@@ -55,15 +55,6 @@
               th:field="*{price}"
               type="text"
               placeholder="상품 가격을 입력해주세요"
-              required
-            />
-          </div>
-          <div class="register_input">
-            <label>상품 할인율</label>
-            <input
-              th:field="*{discount}"
-              type="text"
-              placeholder="상품 할인율을 입력해 주세요"
               required
             />
           </div>

@@ -32,7 +32,7 @@ public class UserController implements Controllers<Users> {
     // 로그인 웹 페이지 요청
     @GetMapping("/login")
     public String login(Model model, HttpServletRequest request) {
-        model.addAttribute("user", new Users());
+        model.addAttribute("users", new Users());
 
         return "src-thymeleaf/html/user/login";
     }
@@ -47,7 +47,7 @@ public class UserController implements Controllers<Users> {
             session.setAttribute(SessionAttributes.ID.name(), selectUser.get(0));
         }
 
-        return "users/userDetail";
+        return "redirect:/";
     }
 
     // 로그아웃 요청
@@ -56,8 +56,8 @@ public class UserController implements Controllers<Users> {
         Users users = userFromRequest.convert(request);
         if (users != null && users.getId() != null)
             request.getSession().invalidate();
-
-        return "main";
+        request.getSession().invalidate();
+        return "redirect:/";
     }
 
     // 사용자 조회
@@ -69,10 +69,10 @@ public class UserController implements Controllers<Users> {
 
         if (selectUsers.size() > 0 && selectUsers.get(0).getId() != null) {
             model.addAttribute("user", selectUsers.get(0));
-            return "users/userDetail";
+            return "/src-thymeleaf/html/user/mypage";
         }
 
-        return "main";
+        return "/src-thymeleaf/html/main/main-page";
     }
 
     @GetMapping("/user/register")
@@ -101,10 +101,14 @@ public class UserController implements Controllers<Users> {
 
         Users sessionUser = userFromRequest.convert(request);
 
-        if(service.update(users, sessionUser))
-            model.addAttribute("user", users);
+        if(service.update(users, sessionUser)){
 
-        return "users/userDetail";
+            model.addAttribute("user", users);
+            HttpSession session = request.getSession();
+            session.setAttribute(SessionAttributes.ID.name(), users);
+        }
+
+        return "redirect:/";
     }
 
     // 회원탈퇴
