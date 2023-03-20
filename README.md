@@ -35,8 +35,8 @@ JDBC URL : jdbc:h2:tcp://localhost/~/test_foody
 
 ## 개발 환경 설정
 
-Front-end: 
-
-Back-end: Spring boot
-JAVA Version 11
+> Front-end: 
+>
+> Back-end: Spring boot
+> JAVA Version 11
 
