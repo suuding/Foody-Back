@@ -1,37 +1,38 @@
 # Foody 쇼핑몰
 > Foody 쇼핑몰
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
-쇼핑몰을 만들었다. 
+식품 쇼핑몰을 만들었다. 기본적으로 회원가입, 로그인, 검색, 게시판 기능을 구현했다. 
 
 <img width='80%' src="https://user-images.githubusercontent.com/95485737/226220475-20763920-9608-4da5-8205-80e53de26144.png"/>
 
 ## 설치 방법
 
-OS X & 리눅스:
-
-```sh
-npm install my-crazy-module --save
-```
-
 윈도우:
+H2 Database 설치 후 H2 console로 접속
+https://www.h2database.com/html/main.html
 
-```sh
-edit autoexec.bat
-```
+H2DB TCP 모드로 서버 접속
+저장한 설정 : Generic H2 (Server)
+JDBC URL : jdbc:h2:tcp://localhost/~/test_foody
 
 ## 사용 예제
 
-스크린 샷과 코드 예제를 통해 사용 방법을 자세히 설명합니다.
+회원가입을 하고 로그인을 할 수 있다. 
+<img width='90%' src="https://user-images.githubusercontent.com/95485737/226224593-3d8b6680-cce6-46e9-918d-5e715974c398.png"/>
+<img width='90%' src="https://user-images.githubusercontent.com/95485737/226224614-8d3ca50b-1c03-4208-a14a-cd089feaf62b.png"/>
 
-_더 많은 예제와 사용법은 [Wiki][wiki]를 참고하세요._
+식품의 품목 별로 분류하고 검색할 수 있다.
+<img width='90%' src="https://user-images.githubusercontent.com/95485737/226224629-2d6b3f3b-205a-4b5a-a35c-432c015aa59d.png"/>
+<img width='90%' src="(https://user-images.githubusercontent.com/95485737/226224650-ba54cee8-a5c2-4b1f-8e32-0488aeff28de.png"/>
+
+관리자 권한의 사용자만 공지사항을 작성할 수 있고, 일반 사용자는 문의글을 작성할 수 있다.
+<img width='90%' src="https://user-images.githubusercontent.com/95485737/226224701-913c013d-60fe-488b-bd5d-51c9d347f870.png"/>
+<img width='90%' src="https://user-images.githubusercontent.com/95485737/226224787-f2b1af8c-9054-4b32-aed8-9bef31e4c7e9.png"/>
 
 ## 개발 환경 설정
 
-모든 개발 의존성 설치 방법과 자동 테스트 슈트 실행 방법을 운영체제 별로 작성합니다.
+프론트: 
+백엔드: Spring boot
 
 ```sh
 make install
