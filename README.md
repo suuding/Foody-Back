@@ -9,11 +9,11 @@
 
 윈도우:
 
-H2 Database 설치 후 H2 console로 접속
+- H2 Database 설치 후 H2 console로 접속
 
 https://www.h2database.com/html/main.html
 
-H2DB TCP 모드로 서버 접속
+- H2DB TCP 모드로 서버 접속
 
 저장한 설정 : Generic H2 (Server)
 
