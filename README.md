@@ -7,7 +7,7 @@
 
 쇼핑몰을 만들었다. 
 
-![](../header.png)
+<img width='80%' src="https://user-images.githubusercontent.com/95485737/226220475-20763920-9608-4da5-8205-80e53de26144.png"/>
 
 ## 설치 방법
 
